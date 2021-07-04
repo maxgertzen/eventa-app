@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SigninForm from './SigninForm';
 import { addLogUser } from '../../api/index';
+// import { Redirect } from 'react-router-dom';
 
 const SigninView = () => {
-    const onSigninSubmit = (e) => {
-        const { target: { email, password, id: path } } = e;
-        addLogUser({
-            email: email.value,
-            password: password.value
-        }, path)
+    const [fireRedirect, setFireRedirect] = useState(false);
 
-    }
     return (
         <>
-            <SigninForm formAction='register' handleSubmit={onSigninSubmit} />
-            <SigninForm formAction='login' handleSubmit={onSigninSubmit} />
+            <SigninForm formAction='register' notifySubmit={setFireRedirect} />
+            <SigninForm formAction='login' />
+            {fireRedirect ? 'SUCCESS' : ''}
         </>
     )
 }
