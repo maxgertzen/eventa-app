@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import SigninForm from './SigninForm';
-import { addLogUser } from '../../api/index';
 // import { Redirect } from 'react-router-dom';
 
 const SigninView = () => {
@@ -8,9 +7,11 @@ const SigninView = () => {
 
     return (
         <>
-            <SigninForm formAction='register' notifySubmit={setFireRedirect} />
-            <SigninForm formAction='login' />
-            {fireRedirect ? 'SUCCESS' : ''}
+            {/* <SigninForm formAction='register' notifySubmit={setFireRedirect} /> */}
+            <SigninForm formAction='login' notifySubmit={setFireRedirect} />
+            <div>
+                {fireRedirect ? 'Sent to Server' : ''}
+            </div>
         </>
     )
 }

@@ -1,42 +1,37 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { useFormik } from 'formik';
+import { signupSchema } from '../../utils/RegisterFormValidation';
 import { addLogUser } from '../../api';
-import useForm from '../../hooks/useForm';
-import { validate } from '../../utils/RegisterFormValidation';
-
 
 const SigninForm = ({ formAction, notifySubmit }) => {
-    const {
-        handleChange,
-        handleSubmit,
-        errors,
-        isSubmitting
-    } = useForm(addLogUser, validate);
-
-    useEffect(() => {
-        if (notifySubmit) notifySubmit(isSubmitting)
-    }, [isSubmitting])
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        vaidationSchema: signupSchema,
+        onSubmit: values => {
+            addLogUser(values, formAction)
+        }
+    });
 
     return (
-        <form id={formAction} onSubmit={handleSubmit}>
-            <input type="email" name="email" onChange={handleChange} placeholder="Enter Email" />
-            {
-                formAction === 'register' && errors.email && (
-                    errors.email.map((value, index) => {
-                        return <p key={index}>{value}</p>
-                    })
-                )
-            }
-            <input type="password" name="password" onChange={handleChange} placeholder="Enter Password" />
-            {
-                formAction === 'register' && errors.password && (
-                    errors.password.map((value, index) => {
-                        return <p key={index}>{value}</p>
-                    })
-                )
-            }
-            <button type="submit">
-                {formAction}
-            </button>
+        <form onSubmit={formik.handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+                id="email"
+                type="email"
+                {...formik.getFieldProps('email')}
+            />
+            {formik.touched.email && formik.errors.email ? (<div>{formik.errors.email}</div>) : null}
+            <label htmlFor="password">Password</label>
+            <input
+                id="password"
+                type="password"
+                {...formik.getFieldProps('password')}
+            />
+            {formik.touched.password && formik.errors.password ? (<div>{formik.errors.password}</div>) : null}
+            <button type="submit">Submit</button>
         </form>
     )
 }
