@@ -12,6 +12,7 @@ const SigninForm = ({ formAction, notifySubmit }) => {
         vaidationSchema: signupSchema,
         onSubmit: values => {
             addLogUser(values, formAction)
+            notifySubmit(true)
         }
     });
 
