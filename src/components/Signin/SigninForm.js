@@ -8,7 +8,6 @@ const SigninForm = ({ formAction, notifySubmit }) => {
     const {
         handleChange,
         handleSubmit,
-        values,
         errors,
         isSubmitting
     } = useForm(addLogUser, validate);
@@ -19,7 +18,7 @@ const SigninForm = ({ formAction, notifySubmit }) => {
 
     return (
         <form id={formAction} onSubmit={handleSubmit}>
-            <input type="email" name="email" onChange={handleChange} value={values?.email || ''} placeholder="Enter Email" />
+            <input type="email" name="email" onChange={handleChange} placeholder="Enter Email" />
             {
                 formAction === 'register' && errors.email && (
                     errors.email.map((value, index) => {
@@ -27,7 +26,7 @@ const SigninForm = ({ formAction, notifySubmit }) => {
                     })
                 )
             }
-            <input type="password" name="password" onChange={handleChange} value={values?.password || ''} placeholder="Enter Password" />
+            <input type="password" name="password" onChange={handleChange} placeholder="Enter Password" />
             {
                 formAction === 'register' && errors.password && (
                     errors.password.map((value, index) => {

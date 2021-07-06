@@ -18,3 +18,11 @@ export const addLogUser = async (user, path) => {
         console.error(error)
     }
 }
+
+export const updateUserDetails = async (userDetails, path) => {
+    try {
+
+    } catch (error) {
+        console.error(error)
+    }
+}
