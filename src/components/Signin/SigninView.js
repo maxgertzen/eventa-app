@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import SigninForm from './SigninForm';
 import Cookies from 'js-cookie'
 import AuthApi from '../../store/AuthApi';
+import CreateEventForm from '../CreateEvent/CreateEventForm';
 
 
 
@@ -38,6 +39,7 @@ const SigninView = () => {
                     Auth.auth ? renderLogOut() : <SigninForm formAction='login' authorize={checkAuthorization} />
                 }
                 <hr />
+                <CreateEventForm />
                 {/* {
                     !Auth.auth && (<SigninForm formAction='register' authorize={checkAuthorization} />)
                 } */}
