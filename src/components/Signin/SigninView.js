@@ -1,35 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import SigninForm from './SigninForm';
-// import { Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie'
+import AuthApi from '../../store/AuthApi';
 
 
 
-const SigninView = ({ auth, setAuth }) => {
-    const [isAuthorized, setIsAuthorized] = useState(false);
+const SigninView = () => {
+    const Auth = useContext(AuthApi);
+    const [userName, setUserName] = useState(() => {
+        return Cookies.get('user') || ''
+    });
 
-    useEffect(() => {
-        const checkAuthorization = () => {
-            if (auth) setIsAuthorized(true)
-            else setIsAuthorized(false)
+
+    const checkAuthorization = () => {
+        let userName = Cookies.get('user');
+        if (userName) {
+            Auth.setAuth(true);
+            setUserName(userName)
+            return
         }
-        checkAuthorization();
-    }, [auth])
-
-    const logOut = () => {
-        setAuth(false)
-        Cookies.remove('user')
+        Auth.setAuth(false)
     }
 
-    const renderLogOut = () => <div>Logged In.<button type="button" onClick={() => logOut()}>Log Out</button></div>
+    const logOut = () => {
+        Cookies.remove('user')
+        Auth.setAuth(false)
+    }
+
+    const renderLogOut = () => <div>Hello {userName} you are Logged In.<br /><button type="button" onClick={() => logOut()}>Log Out</button></div>
 
     return (
         <>
-            {/* <SigninForm formAction='register' notifySubmit={setFireRedirect} /> */}
             <div>
+                <h1>Signin</h1>
+                <hr />
                 {
-                    isAuthorized ? renderLogOut() : <SigninForm formAction='login' notifySubmit={setAuth} />
+                    Auth.auth ? renderLogOut() : <SigninForm formAction='login' authorize={checkAuthorization} />
                 }
+                <hr />
+                {/* {
+                    !Auth.auth && (<SigninForm formAction='register' authorize={checkAuthorization} />)
+                } */}
             </div>
         </>
     )

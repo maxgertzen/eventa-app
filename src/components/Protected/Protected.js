@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import AuthApi from '../../store/AuthApi';
 
-const Protected = ({ auth, component: Component, ...rest }) => {
+const Protected = ({ component: Component, ...rest }) => {
+    const Auth = useContext(AuthApi)
     return (
         <Route
             {...rest}
-            render={() => auth ? (
+            render={() => Auth.auth ? (
                 <Component />
             ) :
                 (

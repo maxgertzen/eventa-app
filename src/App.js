@@ -7,14 +7,20 @@ import Navbar from './components/Navbar/Navbar';
 import Protected from './components/Protected/Protected';
 import SigninView from './components/Signin/SigninView';
 import UserDashboard from './components/User/UserDashboard/UserDashboard';
+import AuthApi from './store/AuthApi';
+
 
 function App() {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(() => {
+    if (Cookies.get('user')) return true;
+    else return false
+  });
+
 
 
   useEffect(() => {
     const authorizeApp = () => {
-      if (Cookies.get('user') && !auth) {
+      if (Cookies.get('user')) {
         setAuth(true)
       } else {
         setAuth(false)
@@ -32,9 +38,11 @@ function App() {
         <li><Link to='/dashboard'>Dashboard</Link></li>
       </Navbar>
       <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route path="/signin" component={SigninView} auth={auth} setAuth={setAuth} />
-        <Protected path="/dashboard" auth={auth} component={UserDashboard} />
+        <AuthApi.Provider value={{ auth, setAuth }}>
+          <Route exact path="/" component={HomeView} />
+          <Route path="/signin" component={SigninView} />
+          <Protected path="/dashboard" component={UserDashboard} />
+        </AuthApi.Provider>
       </Switch>
     </div>
   );
