@@ -26,7 +26,7 @@ const SigninForm = ({ formAction, authorize }) => {
                     {formik.touched.password && formik.errors.password ? (
                         <div>{formik.errors.password}</div>
                     ) : null}
-                    <button type="submit" disabled={formik.isSubmitting}>{formAction}</button>
+                    <button type="submit" disabled={!formik.isValid}>{formAction}</button>
                 </form>
             )}
         </Formik>
