@@ -1,10 +1,11 @@
 import axios from "axios"
 
+
 const URL = 'http://localhost:3100'
 const HEADERS = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'http://localhost:3100'
-}
+};
 
 export const addLogUser = async (user, path) => {
     try {
@@ -34,6 +35,11 @@ export const addEvent = async (newEvent) => {
     } catch (error) {
         console.error(error)
     }
+}
+
+export const getEvents = {
+    method: 'GET',
+    url: '/events',
 }
 
 export const updateUserDetails = async (userDetails, path) => {
