@@ -1,13 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getEvents } from '../api';
 import { useHttp } from '../hooks/useHttp';
-
-import styled from 'styled-components';
-
-const Page = styled.section`
-    width: 100%;
-`
-
+import EventCard from '../components/EventCard/EventCard'
 const ExplorePage = () => {
     const {
         response: events,
@@ -15,7 +9,24 @@ const ExplorePage = () => {
         loading
     } = useHttp(getEvents);
 
+    useEffect(() => {
+
+    })
+
     return (
-        <Page />
+        <section className="explore d-flex flex-wrap justify-content-center my-2">
+            {
+                events && events.map(value => {
+                    return (
+                        <EventCard key={value.id} event={value} />
+                    )
+                })
+            }
+            {
+                loading ? <h1>Loading</h1> : null
+            }
+        </section>
     )
 }
+
+export default ExplorePage

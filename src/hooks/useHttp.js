@@ -7,7 +7,7 @@ axios.defaults.headers = {
 };
 axios.defaults.withCredentials = true;
 
-const useHttp = (methodParams) => {
+export const useHttp = (methodParams) => {
     const [response, setResponse] = useState(undefined);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
@@ -30,4 +30,3 @@ const useHttp = (methodParams) => {
     return { response, error, loading }
 }
 
-export default useHttp;
