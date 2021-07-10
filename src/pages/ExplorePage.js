@@ -23,7 +23,7 @@ const ExplorePage = () => {
                 })
             }
             {
-                loading ? <h1>Loading</h1> : null
+                loading ? <h1>Loading</h1> : error
             }
         </section>
     )

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import SigninForm from '../Forms/SigninForm';
+import SigninForm from '../components/Forms/SigninForm';
 import Cookies from 'js-cookie'
-import AuthApi from '../../store/AuthApi';
-import CreateEventForm from '../CreateEvent/CreateEventForm';
+import AuthApi from '../store/AuthApi';
+import CreateEventForm from '../components/CreateEvent/CreateEventForm';
 
 
 

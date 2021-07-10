@@ -41,6 +41,10 @@ export const getEvents = {
     method: 'GET',
     url: '/events',
 }
+export const getEventById = {
+    method: 'GET',
+    url: '/events/show/',
+}
 
 export const updateUserDetails = async (userDetails, path) => {
     try {

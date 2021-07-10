@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HomeView = () => {
+const HomePage = () => {
     return (
         <section>
             <h1>Home</h1>
@@ -8,4 +8,4 @@ const HomeView = () => {
     )
 }
 
-export default HomeView
+export default HomePage

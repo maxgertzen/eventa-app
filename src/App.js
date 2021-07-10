@@ -2,11 +2,12 @@ import Cookies from 'js-cookie'
 import { useState, useEffect } from 'react'
 import { Link, Switch, Route } from 'react-router-dom';
 import './App.css';
-import HomeView from './components/HomeView/HomeView';
+import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar/Navbar';
 import Protected from './components/Protected/Protected';
-import SigninView from './components/Signin/SigninView';
+import SigninPage from './pages/SigninPage';
 import UserDashboard from './components/User/UserDashboard/UserDashboard';
+import EventPage from './pages/EventPage';
 import ExplorePage from './pages/ExplorePage';
 import AuthApi from './store/AuthApi';
 
@@ -41,8 +42,8 @@ function App() {
       </Navbar>
       <Switch>
         <AuthApi.Provider value={{ auth, setAuth }}>
-          <Route exact path="/" component={HomeView} />
-          <Route path="/signin" component={SigninView} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/signin" component={SigninPage} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/events/show/:eventId" component={EventPage} />
           <Protected path="/dashboard" component={UserDashboard} />
