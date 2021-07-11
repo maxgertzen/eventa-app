@@ -11,14 +11,14 @@ const ExplorePage = () => {
 
     useEffect(() => {
 
-    })
+    }, [])
 
     return (
         <section className="explore d-flex flex-wrap justify-content-center my-2">
             {
                 events && events.map(value => {
                     return (
-                        <EventCard key={value.id} event={value} />
+                        <EventCard key={value["event_id"]} event={value} />
                     )
                 })
             }

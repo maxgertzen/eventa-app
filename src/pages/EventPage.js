@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHttp } from '../hooks/useHttp';
-import { useRouteMatch } from 'react-router-dom'
-import { getEventById } from '../api/index'
+import { useParams } from 'react-router-dom';
+import { getEventById } from '../api/index';
+
 const EventPage = () => {
-    const eventId = useRouteMatch('/events/show/:eventId');
-    const {
-        response: eventDetails,
-        error,
-        loading
-    } = useHttp({
-        ...getEventById,
-        url: eventId.url
-    });
+    const { eventId: id } = useParams();
+    const [eventDetails, setEventDetails] = useState({});
+
+    const getEventData = async (eventId) => {
+        const { data } = await getEventById(eventId);
+        setEventDetails(data);
+    }
+
+    useEffect(() => {
+        getEventData(id)
+    }, [])
 
     return (
-        <section className="my-3">
+        <>
             {eventDetails && (
-                <h3 className="text-capitalize text-center">{eventDetails.name}</h3>
+                <section className="my-3">
+                    <img src="/image-placeholder.png" alt={`${eventDetails.eventName}`} className="w-20 img-fluid" width="400" style={{ float: 'left' }} />
+                    <article>
+                        <h3 className="text-capitalize text-center">{eventDetails.eventName}</h3>
+                        <p>{eventDetails.venueName}</p>
+                        <p>{eventDetails.description}</p>
+                    </article>
+                </section>
             )}
-        </section>
+        </>
     )
 }
 

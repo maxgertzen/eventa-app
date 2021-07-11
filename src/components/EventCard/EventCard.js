@@ -4,10 +4,10 @@ import { formatDate } from '../../utils/helperFunctions';
 
 const EventCard = ({ event }) => {
     return (
-        <div className="card m-3" style={{ width: '18rem' }}>
+        <div className="card m-3 shadow" style={{ width: '18rem' }}>
             <img src={event.image || "/image-placeholder.png"} className="card-img-top" alt={`${event.name}`} />
             <div className="card-body">
-                <h5 className="card-title">
+                <h5 className="card-title text-capitalize">
                     {event.name}
                 </h5>
                 <p className="card-text text-truncate">

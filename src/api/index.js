@@ -41,9 +41,9 @@ export const getEvents = {
     method: 'GET',
     url: '/events',
 }
-export const getEventById = {
-    method: 'GET',
-    url: '/events/show/',
+export const getEventById = async (eventId) => {
+    const data = await axios.get(`${URL}/events/show/${eventId}`)
+    return data
 }
 
 export const updateUserDetails = async (userDetails, path) => {
