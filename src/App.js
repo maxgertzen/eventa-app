@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 import { useState, useEffect } from 'react'
-import { Link, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar/Navbar';
@@ -33,12 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar>
-        <Link to='/' className="nav-link">Home</Link>
-        <Link to='/signin' className="nav-link">Signin</Link>
-        <Link to='/dashboard' className="nav-link">Dashboard</Link>
-        <Link to='/explore' className="nav-link">Explore</Link>
-      </Navbar>
+      <Navbar />
       <Switch>
         <AuthApi.Provider value={{ auth, setAuth }}>
           <Route exact path="/" component={HomePage} />
@@ -51,5 +46,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
