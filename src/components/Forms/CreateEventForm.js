@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { eventSchema } from '../../utils/EventFormValidation';
 import SwitchButton from './FormSwitchButton/SwitchButton';
+import { addEvent } from '../../api';
 
 
 const CreateEventForm = () => {
@@ -10,7 +11,7 @@ const CreateEventForm = () => {
             initialValues={{ name: '', category: '', description: '', price: '', isPublic: false, dateStart: new Date(), dateEnd: new Date() }}
             validationSchema={eventSchema}
             onSubmit={async (values, { setSubmitting }) => {
-                // await addLogUser(values, formAction);
+                await addEvent(values);
                 setSubmitting(false);
             }}
         >
@@ -65,7 +66,7 @@ const CreateEventForm = () => {
                     </div>
                     <div className="col-6 mb-2">
                         <label className="form-label" htmlFor="dateend">Date End</label>
-                        <input className="form-control" id="dateend" type="datetime-local" name="dateend" min="0" {...formik.getFieldProps('dateStart')} />
+                        <input className="form-control" id="dateend" type="datetime-local" name="dateend" min="0" {...formik.getFieldProps('dateEnd')} />
                         {formik.touched.price && formik.errors.price ? (
                             <div class="invalid-feedback">{formik.errors.dateEnd}</div>
                         ) : null}
