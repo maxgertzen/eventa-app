@@ -6,6 +6,8 @@ const Switch = styled.label`
     display: inline-block;
     width: 34px;
     height: 20px;
+    display: block;
+    margin-top: 0.5rem;
 
     .slider {
         position: absolute;
