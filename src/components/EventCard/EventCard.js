@@ -23,8 +23,8 @@ const EventCard = ({ event }) => {
                 </ul>
             </div>
             <div className="card-footer d-flex justify-content-between">
-                <Link className="btn btn-primary" to={`events/show/${event["event_id"]}`}>Show More</Link>
-                <Link className="btn btn-success" to={`events/show/${event["event_id"]}/reserve`}>Reserve</Link>
+                <Link className="btn btn-primary" to={`events/${event["event_id"]}`}>Show More {event["event_id"]}</Link>
+                <Link className="btn btn-success" to={`events/${event["event_id"]}/reserve`}>Reserve</Link>
             </div>
         </div>
     )

@@ -6,12 +6,15 @@ const EventPage = () => {
     const { eventId: id } = useParams();
     const [eventDetails, setEventDetails] = useState({});
 
-    const getEventData = async (eventId) => {
-        const { data } = await getEventById(eventId);
-        setEventDetails(data);
-    }
-
     useEffect(() => {
+        const getEventData = async (eventId) => {
+            try {
+                const { data } = await getEventById(eventId);
+                setEventDetails(data);
+            } catch (error) {
+                console.error(error.response)
+            }
+        }
         getEventData(id)
     }, [])
 

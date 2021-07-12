@@ -2,16 +2,15 @@ import React from 'react';
 import { Formik } from 'formik';
 import { eventSchema } from '../../utils/EventFormValidation';
 import SwitchButton from './FormSwitchButton/SwitchButton';
-import { addEvent } from '../../api';
 
 
-const CreateEventForm = () => {
+const CreateEventForm = ({ submitToServer }) => {
     return (
         <Formik
             initialValues={{ name: '', category: '', description: '', price: '', isPublic: false, dateStart: new Date(), dateEnd: new Date() }}
             validationSchema={eventSchema}
             onSubmit={async (values, { setSubmitting }) => {
-                await addEvent(values);
+                await submitToServer(values);
                 setSubmitting(false);
             }}
         >
@@ -30,8 +29,8 @@ const CreateEventForm = () => {
                     </div>
                     <div className="col-6 mb-2">
                         <label className="form-label" htmlFor="category">Category</label>
-                        <select className="form-select" id="category" name="category" {...formik.getFieldProps('category')}>
-                            <option selected>Select Category</option>
+                        <select className="form-select" id="category" name="category" defaultValue="Select Category" {...formik.getFieldProps('category')}>
+                            <option>Select Category</option>
                             <option value="1">Music</option>
                             <option value="2">Visual Arts</option>
                             <option value="3">Theatre</option>
@@ -72,7 +71,7 @@ const CreateEventForm = () => {
                         ) : null}
                     </div>
                     <div className="col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-primary" disabled={!formik.isValid}>Create</button>
+                        <button type="submit" className="btn btn-primary" disabled={!formik.isValid || !formik.dirty}>Create</button>
                     </div>
                 </form>
             )}

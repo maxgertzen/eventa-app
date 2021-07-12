@@ -39,7 +39,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/signin" component={SigninPage} />
           <Route path="/explore" component={ExplorePage} />
-          <Route path="/events/show/:eventId" component={EventPage} />
+          <Route path="/events/:eventId" component={EventPage} />
           <Protected path="/dashboard" component={DashboardPage} />
         </AuthApi.Provider>
       </Switch>

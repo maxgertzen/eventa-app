@@ -15,25 +15,23 @@ export const addLogUser = async (user, path) => {
             data: user,
             withCredentials: true
         })
-        if (response.ok) {
-            return response
-        }
+        return response
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 
 export const addEvent = async (newEvent) => {
     try {
-        const response = await axios.post(`${URL}/events`, newEvent, {
+        const response = await axios.post(`${URL}/events/cr`, newEvent, {
             headers: HEADERS,
             withCredentials: true
         });
-        if (response.ok) {
-            return response;
-        }
+        return response;
     } catch (error) {
         console.error(error)
+        return error.response.data;
     }
 }
 
@@ -46,11 +44,17 @@ export const getEvents = async (filter) => {
         return data
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 export const getEventById = async (eventId) => {
-    const data = await axios.get(`${URL}/events/show/${eventId}`)
-    return data
+    try {
+        const data = await axios.get(`${URL}/events/${eventId}`)
+        return data
+    } catch (error) {
+        console.error(error)
+        return error.response.data
+    }
 }
 
 export const updateUserDetails = async (userDetails, path) => {
