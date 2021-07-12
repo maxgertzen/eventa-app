@@ -7,16 +7,26 @@ import AuthApi from '../store/AuthApi';
 
 const SigninPage = () => {
     const Auth = useContext(AuthApi);
-    const [userName, setUserName] = useState(() => {
-        return Cookies.get('user') || ''
+    const [userDetails, setUserDetails] = useState(() => {
+        let splitted = Cookies.get('user')?.split('?');
+        let newUser = splitted ? {
+            id: splitted[0],
+            firstName: splitted[1]
+        } : {}
+        return newUser;
     });
 
 
     const checkAuthorization = () => {
-        let userName = Cookies.get('user');
-        if (userName) {
+        let user = Cookies.get('user');
+        if (user) {
             Auth.setAuth(true);
-            setUserName(userName)
+            let splitted = user.split('?');
+            let newUser = splitted ? {
+                id: splitted[0],
+                firstName: splitted[1]
+            } : {}
+            setUserDetails(newUser)
             return
         }
         Auth.setAuth(false)
@@ -27,7 +37,7 @@ const SigninPage = () => {
         Auth.setAuth(false)
     }
 
-    const renderLogOut = () => <div>Hello {userName} you are Logged In.<br /><button type="button" onClick={() => logOut()}>Log Out</button></div>
+    const renderLogOut = () => <div>Hello {userDetails.firstName} you are Logged In.<br /><button type="button" onClick={() => logOut()}>Log Out</button></div>
 
     return (
         <>

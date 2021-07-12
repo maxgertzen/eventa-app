@@ -11,7 +11,6 @@ const CreateEventForm = () => {
             validationSchema={eventSchema}
             onSubmit={async (values, { setSubmitting }) => {
                 // await addLogUser(values, formAction);
-                // authorize()
                 setSubmitting(false);
             }}
         >
