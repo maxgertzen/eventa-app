@@ -6,11 +6,10 @@ import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar/Navbar';
 import Protected from './components/Protected/Protected';
 import SigninPage from './pages/SigninPage';
-import UserDashboard from './components/User/UserDashboard/UserDashboard';
 import EventPage from './pages/EventPage';
 import ExplorePage from './pages/ExplorePage';
 import AuthApi from './store/AuthApi';
-
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   const [auth, setAuth] = useState(() => {
@@ -46,7 +45,7 @@ function App() {
           <Route path="/signin" component={SigninPage} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/events/show/:eventId" component={EventPage} />
-          <Protected path="/dashboard" component={UserDashboard} />
+          <Protected path="/dashboard" component={DashboardPage} />
         </AuthApi.Provider>
       </Switch>
     </div>

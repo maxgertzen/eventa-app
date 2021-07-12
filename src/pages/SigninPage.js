@@ -2,11 +2,10 @@ import React, { useContext, useState } from 'react';
 import SigninForm from '../components/Forms/SigninForm';
 import Cookies from 'js-cookie'
 import AuthApi from '../store/AuthApi';
-import CreateEventForm from '../components/CreateEvent/CreateEventForm';
 
 
 
-const SigninView = () => {
+const SigninPage = () => {
     const Auth = useContext(AuthApi);
     const [userName, setUserName] = useState(() => {
         return Cookies.get('user') || ''
@@ -39,7 +38,6 @@ const SigninView = () => {
                     Auth.auth ? renderLogOut() : <SigninForm formAction='login' authorize={checkAuthorization} />
                 }
                 <hr />
-                <CreateEventForm />
                 {/* {
                     !Auth.auth && (<SigninForm formAction='register' authorize={checkAuthorization} />)
                 } */}
@@ -48,4 +46,4 @@ const SigninView = () => {
     )
 }
 
-export default SigninView
+export default SigninPage

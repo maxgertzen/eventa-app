@@ -5,7 +5,5 @@ export const eventSchema = Yup.object({
     description: Yup.string().max(200),
     price: Yup.number().min(0),
     dateStart: Yup.date().min(new Date()),
-    dateEnd: Yup.date().min(new Date()),
-    timeStart: Yup.date().min(new Date()),
-    timeEnd: Yup.date().min(new Date())
+    dateEnd: Yup.date().min(new Date())
 })

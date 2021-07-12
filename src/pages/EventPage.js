@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHttp } from '../hooks/useHttp';
 import { useParams } from 'react-router-dom';
 import { getEventById } from '../api/index';
 

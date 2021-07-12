@@ -37,9 +37,16 @@ export const addEvent = async (newEvent) => {
     }
 }
 
-export const getEvents = {
-    method: 'GET',
-    url: '/events',
+export const getEvents = async (filter) => {
+    try {
+        let getURL = filter ? `${URL}/events/s` : `${URL}/events`;
+        const data = await axios.get(getURL, {
+            params: { search: filter }
+        })
+        return data
+    } catch (error) {
+        console.error(error)
+    }
 }
 export const getEventById = async (eventId) => {
     const data = await axios.get(`${URL}/events/show/${eventId}`)
