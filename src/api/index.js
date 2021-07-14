@@ -24,12 +24,16 @@ export const addLogUser = async (user, path) => {
 
 export const addEvent = async (newEvent) => {
     try {
-        const response = await axios.post(`${URL}/events/cr`, newEvent, {
+        const response = await axios.post(`${URL}/events/create`, newEvent, {
             headers: HEADERS,
             withCredentials: true
         });
-        return response;
+        console.log(response)
+        return response.data.message;
     } catch (error) {
+        //     console.log(error.response.data);
+        //     console.log(error.response.status);
+        //     console.log(error.response.headers);
         console.error(error)
         return error.response.data;
     }

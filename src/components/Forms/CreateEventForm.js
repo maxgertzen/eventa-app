@@ -7,10 +7,19 @@ import SwitchButton from './FormSwitchButton/SwitchButton';
 const CreateEventForm = ({ submitToServer }) => {
     return (
         <Formik
-            initialValues={{ name: '', category: '', description: '', price: '', isPublic: false, dateStart: new Date(), dateEnd: new Date() }}
+            initialValues={{ name: '', category: '', description: '', price: '', isPublic: 0, dateStart: new Date(), dateEnd: new Date(), imageupload: null }}
             validationSchema={eventSchema}
             onSubmit={async (values, { setSubmitting }) => {
-                await submitToServer(values);
+                let data = new FormData();
+                data.append('name', values.name)
+                data.append('category', values.category)
+                data.append('description', values.category)
+                data.append('price', values.price)
+                data.append('isPublic', values.isPublic)
+                data.append('dateStart', values.dateStart)
+                data.append('dateEnd', values.dateEnd)
+                data.append('imageupload', values.imageupload)
+                await submitToServer(data);
                 setSubmitting(false);
             }}
         >
@@ -69,6 +78,10 @@ const CreateEventForm = ({ submitToServer }) => {
                         {formik.touched.price && formik.errors.price ? (
                             <div class="invalid-feedback">{formik.errors.dateEnd}</div>
                         ) : null}
+                    </div>
+                    <div className="col-12 mb-2 text-center">
+                        <label for="formFile" className="form-label">Upload Image</label>
+                        <input type="file" id="formFile" className="form-control" name="imageupload" onChange={event => formik.setFieldValue('imageupload', event.target.files[0])} />
                     </div>
                     <div className="col-12 mb-2 d-grid">
                         <button type="submit" className="btn btn-primary" disabled={!formik.isValid || !formik.dirty}>Create</button>
