@@ -61,6 +61,18 @@ export const getEventById = async (eventId) => {
     }
 }
 
+export const getUserEvents = async () => {
+    try {
+        const data = await axios.get(`${URL}/events/dashboard`, {
+            headers: HEADERS,
+            withCredentials: true
+        })
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export const updateUserDetails = async (userDetails, path) => {
     try {
 

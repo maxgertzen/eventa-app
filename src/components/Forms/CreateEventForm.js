@@ -80,7 +80,7 @@ const CreateEventForm = ({ submitToServer }) => {
                         ) : null}
                     </div>
                     <div className="col-12 mb-2 text-center">
-                        <label for="formFile" className="form-label">Upload Image</label>
+                        <label htmlFor="formFile" className="form-label">Upload Image</label>
                         <input type="file" id="formFile" className="form-control" name="imageupload" onChange={event => formik.setFieldValue('imageupload', event.target.files[0])} />
                     </div>
                     <div className="col-12 mb-2 d-grid">

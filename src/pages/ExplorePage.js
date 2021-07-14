@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getEvents } from '../api';
 import EventCard from '../components/EventCard/EventCard'
 import SearchBox from '../components/SearchBox/SearchBox';
-
 const ExplorePage = () => {
     const [events, setEvents] = useState([])
 
