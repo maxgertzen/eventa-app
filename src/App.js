@@ -9,8 +9,8 @@ import SigninPage from './pages/SigninPage';
 import EventPage from './pages/EventPage';
 import ExplorePage from './pages/ExplorePage';
 import AuthApi from './store/AuthApi';
-import DashboardPage from './pages/DashboardPage';
-
+// import DashboardPage from './pages/DashboardPage';
+import DashPage from './pages/DashPage'
 function App() {
   const [auth, setAuth] = useState(() => {
     if (Cookies.get('user')) return true;
@@ -40,7 +40,7 @@ function App() {
           <Route path="/signin" component={SigninPage} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/events/:eventId" component={EventPage} />
-          <Protected path="/dashboard" component={DashboardPage} />
+          <Protected path="/dashboard" component={DashPage} />
         </AuthApi.Provider>
       </Switch>
     </div>
