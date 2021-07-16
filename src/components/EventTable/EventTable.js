@@ -2,7 +2,8 @@ import React from 'react';
 import { FaPen, FaTrashAlt } from 'react-icons/fa';
 import DateFormat from '../Date/DateFormat';
 import TimeFormat from '../Date/TimeFormat';
-const EventTable = ({ userEvents: events }) => {
+
+const EventTable = ({ userEvents: events, handleDelete }) => {
     return (
         events && (
             <div className="table-responsive">
@@ -31,7 +32,7 @@ const EventTable = ({ userEvents: events }) => {
                                     <td><DateFormat dateString={userEvent.dateEnd} /></td>
                                     <td><TimeFormat dateString={userEvent.dateEnd} /></td>
                                     <td><FaPen style={{ marginRight: '20px', marginLeft: '2px' }} role="button" onClick={() => console.log(`Edit ${userEvent.event_id}`)} />
-                                        <FaTrashAlt role="button" onClick={() => console.log(`Delete ${userEvent.event_id}`)} />
+                                        <FaTrashAlt role="button" onClick={() => handleDelete(userEvent.event_id)} />
                                     </td>
                                 </tr>
                             )

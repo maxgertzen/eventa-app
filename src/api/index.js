@@ -81,3 +81,16 @@ export const updateUserDetails = async (userDetails, path) => {
         console.error(error)
     }
 }
+
+export const deleteEvent = async (eventId) => {
+    try {
+        const data = await axios.delete(`${URL}/events/${eventId}`, {
+            headers: HEADERS,
+            withCredentials: true
+        })
+        console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}

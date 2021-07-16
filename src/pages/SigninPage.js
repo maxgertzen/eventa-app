@@ -5,7 +5,7 @@ import AuthApi from '../store/AuthApi';
 
 
 
-const SigninPage = () => {
+const SigninPage = ({ disconnect: logOut }) => {
     const Auth = useContext(AuthApi);
     const [userDetails, setUserDetails] = useState(() => {
         let splitted = Cookies.get('user')?.split('?');
@@ -29,11 +29,6 @@ const SigninPage = () => {
             setUserDetails(newUser)
             return
         }
-        Auth.setAuth(false)
-    }
-
-    const logOut = () => {
-        Cookies.remove('user')
         Auth.setAuth(false)
     }
 

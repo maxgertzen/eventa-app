@@ -30,19 +30,23 @@ function App() {
     authorizeApp()
   }, [auth])
 
+  const logOut = () => {
+    Cookies.remove('user')
+    setAuth(false)
+  }
 
   return (
     <div className="App">
-      <Navbar />
-      <Switch>
-        <AuthApi.Provider value={{ auth, setAuth }}>
+      <AuthApi.Provider value={{ auth, setAuth }}>
+        <Navbar disconnect={logOut} />
+        <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/signin" component={SigninPage} />
+          <Route path="/signin" component={SigninPage} disconnect={logOut} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/events/:eventId" component={EventPage} />
           <Protected path="/dashboard" component={DashPage} />
-        </AuthApi.Provider>
-      </Switch>
+        </Switch>
+      </AuthApi.Provider>
     </div>
   );
 }

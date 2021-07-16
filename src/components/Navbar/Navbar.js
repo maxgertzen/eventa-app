@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegUserCircle } from 'react-icons/fa'
-
-const Navbar = () => {
+import AuthApi from '../../store/AuthApi';
+const Navbar = ({ disconnect }) => {
+    const Auth = useContext(AuthApi)
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -14,18 +15,22 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul className="navbar-nav">
-                        <li className="nav-item"><Link to='/' className="nav-link">Home</Link></li>
-                        <li className="nav-item"><Link to='/dashboard' className="nav-link">Dashboard</Link></li>
-                        <li className="nav-item"><Link to='/explore' className="nav-link">Explore</Link></li>
+                    <ul className="navbar-nav ms-auto">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <FaRegUserCircle /></a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><Link className="dropdown-item" to="/signin">Signin</Link></li>
-                                <li><Link className="dropdown-item" to="/register">Register</Link></li>
+                                {
+                                    Auth.auth ?
+                                        <li><a className="dropdown-item" href="/" onClick={() => disconnect()}>Log Out</a></li>
+                                        :
+                                        <li><Link className="dropdown-item" to="/signin">Signin / Register</Link></li>
+                                }
                             </ul>
                         </li>
+                        <li className="nav-item"><Link to='/' className="nav-link">Home</Link></li>
+                        {Auth.auth && (<li className="nav-item"><Link to='/dashboard' className="nav-link">Dashboard</Link></li>)}
+                        <li className="nav-item"><Link to='/explore' className="nav-link">Explore</Link></li>
                     </ul>
                 </div>
             </div>

@@ -2,9 +2,11 @@ import React from 'react';
 
 const DateFormat = ({ dateString }) => {
     return (
-        dateString && (<time>
-            {`${new Date(dateString).getUTCDate()}/${new Date(dateString).getUTCMonth()}/${new Date(dateString).getFullYear()}`}
-        </time>)
+        <>
+            {dateString && (<time>
+                {`${new Date(dateString).getUTCDate()}/${new Date(dateString).getUTCMonth()}/${new Date(dateString).getFullYear()}`}
+            </time>)}
+        </>
     )
 }
 
