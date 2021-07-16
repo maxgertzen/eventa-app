@@ -25,7 +25,7 @@ const EventPage = () => {
         <>
             {eventDetails && (
                 <section className="my-3 text-center" style={{ backgroundColor: 'yellow' }}>
-                    <img src="/image-placeholder.png" alt={`${eventDetails.eventName}`} className="w-20 img-fluid" width="400" />
+                    <img src={eventDetails.image} alt={`${eventDetails.eventName}`} className="w-20 img-fluid" width="400" />
                     <h3 className="text-capitalize">{eventDetails.eventName}</h3>
                     <article>
                         <p>{eventDetails.venueName}</p>

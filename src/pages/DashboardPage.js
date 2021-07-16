@@ -1,54 +1,41 @@
-import React, { useState } from 'react'
-import CreateEventForm from '../components/Forms/CreateEventForm';
-import { addEvent } from '../api/index';
-// import Cookies from 'js-cookie';
+import React, { useState, useEffect } from 'react';
+import { getUserEvents } from '../api/index';
+import { deleteEvent } from '../api/index';
+import EventTable from '../components/EventTable/EventTable';
+import ModalBox from '../components/ModalBox/ModalBox';
 
 const DashboardPage = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [response, setResponse] = useState({
-        message: '',
-        error: ''
+    const [userEvents, setUserEvents] = useState([])
+    const [eventModal, setEventModal] = useState({
+        id: '',
+        name: ''
     });
 
-    const callApiAndSubmitting = async (values) => {
-        setIsLoading(true);
-        try {
-            let data = await addEvent(values);
-            if (data.ok) {
-                setResponse((prevResponse) => ({
-                    ...prevResponse,
-                    message: data.message
-                }))
-            } else {
-                setResponse((prevResponse) => ({
-                    ...prevResponse,
-                    error: data.error
-                }))
-            }
-            setResponse(data);
-            setIsLoading(false)
-        } catch (error) {
-            console.log(error)
-            setIsLoading(false)
+    useEffect(() => {
+        const callApi = async () => {
+            const { data } = await getUserEvents()
+            setUserEvents(data);
         }
-    };
+        callApi()
+    }, [])
 
+    /*     const activateModal = (eventId, eventName) => {
+            setEventModal({ id: eventId, name: eventName })
+        } */
+
+    const handleDelete = async (eventId) => {
+        await deleteEvent(eventId);
+        const { data } = await getUserEvents()
+        setUserEvents(data);
+    }
     return (
-        <section>
-            <h1>Create Event</h1>
-            {response.message ? (<div className="alert alert-success m-auto" role="alert">
-                {response.message}
-            </div>) : response.error ? (
-                <div className="alert alert-danger m-auto" role="alert">
-                    {response.error}
-                </div>
-            ) : null}
-            {!isLoading
-                ? <CreateEventForm submitToServer={callApiAndSubmitting} />
-                : (<div className="spinner-border text-success m-auto" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>)}
-        </section>
+        <article className="container">
+            <ModalBox id={eventModal.id} userEventName={eventModal.name} actionFunc={handleDelete} />
+            <h1>Dashboard</h1>
+            {userEvents?.length && (
+                <EventTable userEvents={userEvents} handleDelete={handleDelete} />
+            )}
+        </article>
     )
 }
 

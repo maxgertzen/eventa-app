@@ -30,6 +30,7 @@ const Navbar = ({ disconnect }) => {
                         </li>
                         <li className="nav-item"><Link to='/' className="nav-link">Home</Link></li>
                         {Auth.auth && (<li className="nav-item"><Link to='/dashboard' className="nav-link">Dashboard</Link></li>)}
+                        {Auth.auth && (<li className="nav-item"><Link to='/addevent' className="nav-link">Create</Link></li>)}
                         <li className="nav-item"><Link to='/explore' className="nav-link">Explore</Link></li>
                     </ul>
                 </div>

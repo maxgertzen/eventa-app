@@ -1,44 +1,36 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { eventSchema } from '../../utils/EventFormValidation';
-import SwitchButton from './FormSwitchButton/SwitchButton';
-
+import { eventSchema } from '../../../utils/EventFormValidation';
+import SwitchButton from '../FormSwitchButton/SwitchButton';
+import { initialValues } from './utils';
+import VenueSelect from './VenueSelect';
 
 const CreateEventForm = ({ submitToServer }) => {
     return (
         <Formik
-            initialValues={{ name: '', category: '', description: '', price: '', isPublic: 0, dateStart: new Date(), dateEnd: new Date(), imageupload: null }}
+            initialValues={initialValues}
             validationSchema={eventSchema}
             onSubmit={async (values, { setSubmitting }) => {
                 let data = new FormData();
-                data.append('name', values.name)
-                data.append('category', values.category)
-                data.append('description', values.category)
-                data.append('price', values.price)
-                data.append('isPublic', values.isPublic)
-                data.append('dateStart', values.dateStart)
-                data.append('dateEnd', values.dateEnd)
-                data.append('imageupload', values.imageupload)
+                for (const key in values) {
+                    data.append(key, values[key]);
+                }
                 await submitToServer(data);
                 setSubmitting(false);
             }}
         >
             {formik => (
-                <form className="m-auto row" style={{ width: '50vw' }} onSubmit={formik.handleSubmit}>
-                    <div className="col-11 mb-2">
+                <form className="m-auto row" onSubmit={formik.handleSubmit}>
+                    <div className="col-md-12 col-12 mb-2">
                         <label className="form-label" htmlFor="name">Name</label>
-                        <input className={`form-control ${formik.isValid && formik.touched.name ? 'is-valid' : formik.errors.name ? 'is-invalid' : ''}`} id="name" type="text" {...formik.getFieldProps('name')} />
+                        <input className={`form-control ${formik.isValid && formik.touched.name ? 'is-valid' : formik.errors.name ? 'is-invalid' : ''}`} id="name" type="text" {...formik.getFieldProps('name')} placeholder="Event Name Here" />
                         {formik.touched.name && formik.errors.name ? (
-                            <div class="invalid-feedback">{formik.errors.name}</div>
+                            <div className="invalid-feedback">{formik.errors.name}</div>
                         ) : null}
                     </div>
-                    <div className="col-1 d-flex flex-column align-items-end justify-items-center mb-2">
-                        <label className="form-label" htmlFor="isPublic">Public</label>
-                        <SwitchButton id="isPublic" type="checkbox" name="isPublic" {...formik.getFieldProps('isPublic')} />
-                    </div>
-                    <div className="col-6 mb-2">
+                    <div className="col-md-6 col-12 mb-2">
                         <label className="form-label" htmlFor="category">Category</label>
-                        <select className="form-select" id="category" name="category" defaultValue="Select Category" {...formik.getFieldProps('category')}>
+                        <select className="form-select" id="category" name="category" {...formik.getFieldProps('category')}>
                             <option>Select Category</option>
                             <option value="1">Music</option>
                             <option value="2">Visual Arts</option>
@@ -48,42 +40,47 @@ const CreateEventForm = ({ submitToServer }) => {
                             <option value="6">Party or Social Gathering</option>
                         </select>
                         {formik.touched.category && formik.errors.category ? (
-                            <div class="invalid-feedback">{formik.errors.category}</div>
+                            <div className="invalid-feedback">{formik.errors.category}</div>
                         ) : null}
                     </div>
-                    <div className="col-6 mb-2">
+                    <div className="col-md-5 col-10 mb-2">
                         <label className="form-label" htmlFor="price">Price</label>
                         <input className="form-control" id="price" type="number" name="price" min="0" {...formik.getFieldProps('price')} />
                         {formik.touched.price && formik.errors.price ? (
-                            <div class="invalid-feedback">{formik.errors.price}</div>
+                            <div className="invalid-feedback">{formik.errors.price}</div>
                         ) : null}
                     </div>
-                    <div className="col-12 mb-2">
+                    <div className="col-md-1 col-2 d-flex flex-column align-items-center justify-items-center mb-2">
+                        <label className="form-label" htmlFor="isPublic">Public</label>
+                        <SwitchButton id="isPublic" type="checkbox" name="isPublic" value="1" {...formik.getFieldProps('isPublic')} />
+                    </div>
+                    <div className="col-md-12 col-12 mb-2">
                         <label className="form-label" htmlFor="description">Description</label>
                         <textarea className="form-control" id="description" name="description" {...formik.getFieldProps('description')}></textarea>
                         {formik.touched.description && formik.errors.description ? (
-                            <div class="invalid-feedback">{formik.errors.description}</div>
+                            <div className="invalid-feedback">{formik.errors.description}</div>
                         ) : null}
                     </div>
-                    <div className="col-6 mb-2">
+                    <div className="col-md-6 col-12 mb-2">
                         <label className="form-label" htmlFor="datestart">Date Start</label>
                         <input className="form-control" id="datestart" type="datetime-local" name="datestart" min="0" {...formik.getFieldProps('dateStart')} />
                         {formik.touched.price && formik.errors.price ? (
-                            <div class="invalid-feedback">{formik.errors.dateStart}</div>
+                            <div className="invalid-feedback">{formik.errors.dateStart}</div>
                         ) : null}
                     </div>
-                    <div className="col-6 mb-2">
+                    <div className="col-md-6 col-12 mb-2">
                         <label className="form-label" htmlFor="dateend">Date End</label>
                         <input className="form-control" id="dateend" type="datetime-local" name="dateend" min="0" {...formik.getFieldProps('dateEnd')} />
                         {formik.touched.price && formik.errors.price ? (
-                            <div class="invalid-feedback">{formik.errors.dateEnd}</div>
+                            <div className="invalid-feedback">{formik.errors.dateEnd}</div>
                         ) : null}
                     </div>
-                    <div className="col-12 mb-2 text-center">
+                    <div className="col-md-12 col-12 mb-2">
                         <label htmlFor="formFile" className="form-label">Upload Image</label>
                         <input type="file" id="formFile" className="form-control" name="imageupload" onChange={event => formik.setFieldValue('imageupload', event.target.files[0])} />
                     </div>
-                    <div className="col-12 mb-2 d-grid">
+                    <VenueSelect formik={formik} />
+                    <div className="col-md-12 col-12 mb-2 d-grid">
                         <button type="submit" className="btn btn-primary" disabled={!formik.isValid || !formik.dirty}>Create</button>
                     </div>
                 </form>

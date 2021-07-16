@@ -36,7 +36,7 @@ const SigninPage = ({ disconnect: logOut }) => {
 
     return (
         <>
-            <div>
+            <div className="container">
                 <h1>Signin</h1>
                 <hr />
                 {

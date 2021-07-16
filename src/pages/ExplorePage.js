@@ -20,7 +20,7 @@ const ExplorePage = () => {
     }
 
     return (
-        <section className="explore">
+        <section className="explore container">
             <SearchBox handleSearch={submitSearch} />
             <article className="d-flex flex-wrap justify-content-center my-2">
                 {

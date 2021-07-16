@@ -28,12 +28,8 @@ export const addEvent = async (newEvent) => {
             headers: HEADERS,
             withCredentials: true
         });
-        console.log(response)
-        return response.data.message;
+        return response;
     } catch (error) {
-        //     console.log(error.response.data);
-        //     console.log(error.response.status);
-        //     console.log(error.response.headers);
         console.error(error)
         return error.response.data;
     }
@@ -90,6 +86,24 @@ export const deleteEvent = async (eventId) => {
         })
         console.log(data)
         return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getCountries = async () => {
+    try {
+        const data = await axios.get(`${URL}/venues/countries`);
+        return data;
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getCities = async (countryCode) => {
+    try {
+        const data = await axios.get(`${URL}/venues/${countryCode}/cities`);
+        return data;
     } catch (error) {
         console.error(error)
     }
