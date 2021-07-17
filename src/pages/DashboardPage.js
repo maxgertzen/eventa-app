@@ -1,40 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { getUserEvents } from '../api/index';
-import { deleteEvent } from '../api/index';
-import EventTable from '../components/EventTable/EventTable';
-import ModalBox from '../components/ModalBox/ModalBox';
+import React, { useContext } from 'react';
+import { useRouteMatch, Switch, Route } from 'react-router-dom';
+import UserProfilePage from './UserProfilePage';
+import SideNav from '../components/SideNav/SideNav';
+import EventsManagePage from './EventsManagePage';
+import AuthApi from '../store/AuthApi';
 
 const DashboardPage = () => {
-    const [userEvents, setUserEvents] = useState([])
-    const [eventModal, setEventModal] = useState({
-        id: '',
-        name: ''
-    });
+    const { userName } = useContext(AuthApi);
+    let { path, url } = useRouteMatch();
 
-    useEffect(() => {
-        const callApi = async () => {
-            const { data } = await getUserEvents()
-            setUserEvents(data);
-        }
-        callApi()
-    }, [])
-
-    /*     const activateModal = (eventId, eventName) => {
-            setEventModal({ id: eventId, name: eventName })
-        } */
-
-    const handleDelete = async (eventId) => {
-        await deleteEvent(eventId);
-        const { data } = await getUserEvents()
-        setUserEvents(data);
-    }
     return (
-        <article className="container">
-            <ModalBox id={eventModal.id} userEventName={eventModal.name} actionFunc={handleDelete} />
-            <h1>Dashboard</h1>
-            {userEvents?.length && (
-                <EventTable userEvents={userEvents} handleDelete={handleDelete} />
-            )}
+        <article className="container-fluid h-80">
+            <div className="row">
+                <SideNav url={url} userName={userName} />
+                <Switch>
+                    <Route exact path={`${path}`}>
+                        <article className="col-10 d-flex justify-content-center align-items-center">
+                            <h4>Hello {userName}</h4>
+                        </article>
+                    </Route>
+                    <Route path={`${path}/events`}>
+                        <EventsManagePage />
+                    </Route>
+                    <Route path={`${path}/profile`} component={UserProfilePage} />
+                </Switch>
+            </div>
         </article>
     )
 }

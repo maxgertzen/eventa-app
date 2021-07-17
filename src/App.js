@@ -18,13 +18,16 @@ function App() {
     if (Cookies.get('user')) return true;
     else return false
   });
+  const [userName, setUserName] = useState("");
 
 
 
   useEffect(() => {
     const authorizeApp = () => {
-      if (Cookies.get('user')) {
+      let user = Cookies.get('user');
+      if (user) {
         setAuth(true)
+        setUserName(user.split('?')[1])
       } else {
         setAuth(false)
       }
@@ -39,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <AuthApi.Provider value={{ auth, setAuth }}>
+      <AuthApi.Provider value={{ auth, userName, setAuth }}>
         <Navbar disconnect={logOut} />
         <Switch>
           <Route exact path="/" component={HomePage} />
