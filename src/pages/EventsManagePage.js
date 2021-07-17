@@ -3,20 +3,13 @@ import { getUserEvents, deleteEvent } from '../api/index';
 import EventTable from '../components/EventsManage/EventTable';
 import NoEventsYet from '../components/EventsManage/NoEventsYet';
 
-const EventsManagePage = () => {
-    const [userEvents, setUserEvents] = useState([])
+const EventsManagePage = ({ userEvents, setUserEvents }) => {
+
     // const [eventModal, setEventModal] = useState({
     //     id: '',
     //     name: ''
     // });
 
-    useEffect(() => {
-        const callApi = async () => {
-            const { data } = await getUserEvents()
-            setUserEvents(data);
-        }
-        callApi()
-    }, [])
 
     /*     const activateModal = (eventId, eventName) => {
             setEventModal({ id: eventId, name: eventName })

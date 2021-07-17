@@ -21,6 +21,7 @@ const Navbar = ({ disconnect }) => {
                                 <FaRegUserCircle /></a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 {Auth.auth && (<div className="disabled dropdown-item text-muted">Hello {Cookies.get('user').split('?')[1]}</div>)}
+                                {Auth.auth && (<li><Link to='/dashboard' className="dropdown-item">Dashboard</Link></li>)}
                                 {
                                     Auth.auth ?
                                         <li><a className="dropdown-item" href="/" onClick={() => disconnect()}>Log Out</a></li>
@@ -30,7 +31,6 @@ const Navbar = ({ disconnect }) => {
                             </ul>
                         </li>
                         <li className="nav-item"><Link to='/' className="nav-link">Home</Link></li>
-                        {Auth.auth && (<li className="nav-item"><Link to='/dashboard' className="nav-link">Dashboard</Link></li>)}
                         {Auth.auth && (<li className="nav-item"><Link to='/addevent' className="nav-link">Create</Link></li>)}
                         <li className="nav-item"><Link to='/explore' className="nav-link">Explore</Link></li>
                     </ul>

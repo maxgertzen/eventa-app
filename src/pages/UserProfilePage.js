@@ -1,8 +1,11 @@
 import React from 'react';
 
-const UserProfilePage = () => {
+const UserProfilePage = ({ info }) => {
     return (
-        <h1>User Profile Page</h1>
+        <article>
+            <h1>User Profile Page</h1>
+            {JSON.stringify(info)}
+        </article>
     )
 }
 

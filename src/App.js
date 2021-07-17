@@ -20,8 +20,6 @@ function App() {
   });
   const [userName, setUserName] = useState("");
 
-
-
   useEffect(() => {
     const authorizeApp = () => {
       let user = Cookies.get('user');

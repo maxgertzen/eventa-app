@@ -72,7 +72,18 @@ export const getUserEvents = async () => {
             headers: HEADERS,
             withCredentials: true
         })
-        console.log(data)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export const getUserDetails = async () => {
+    try {
+        const data = await axios.get(`${URL}/users/dashboard`, {
+            headers: HEADERS,
+            withCredentials: true
+        })
         return data
     } catch (error) {
         console.error(error)
