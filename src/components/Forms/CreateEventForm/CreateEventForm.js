@@ -4,6 +4,8 @@ import { eventSchema } from '../../../utils/EventFormValidation';
 import SwitchButton from '../FormSwitchButton/SwitchButton';
 import { initialValues } from './utils';
 import VenueSelect from './VenueSelect';
+import styled from 'styled-components';
+
 
 const CreateEventForm = ({ submitToServer }) => {
     return (
@@ -79,7 +81,10 @@ const CreateEventForm = ({ submitToServer }) => {
                         <label htmlFor="formFile" className="form-label">Upload Image</label>
                         <input type="file" id="formFile" className="form-control" name="imageupload" onChange={event => formik.setFieldValue('imageupload', event.target.files[0])} />
                     </div>
-                    <VenueSelect formik={formik} />
+                    <fieldset>
+                        <legend>Venue Details</legend>
+                        <VenueSelect formik={formik} />
+                    </fieldset>
                     <div className="col-md-12 col-12 mb-2 d-grid">
                         <button type="submit" className="btn btn-primary" disabled={!formik.isValid || !formik.dirty}>Create</button>
                     </div>

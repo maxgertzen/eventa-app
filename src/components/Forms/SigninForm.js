@@ -1,13 +1,12 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { signupSchema } from '../../utils/RegisterFormValidation';
 import { addLogUser } from '../../api';
-
-const SigninForm = ({ formAction, authorize }) => {
+import { loginSchema } from '../../utils/LoginFormValidation';
+const SigninForm = ({ formAction, authorize, children }) => {
     return (
         <Formik
             initialValues={{ email: '', password: '' }}
-            validationSchema={signupSchema}
+            validationSchema={loginSchema}
             onSubmit={async (values, { setSubmitting }) => {
                 await addLogUser(values, formAction);
                 authorize()
@@ -31,8 +30,9 @@ const SigninForm = ({ formAction, authorize }) => {
                         ) : null}
                     </div>
                     <div className="col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-primary" disabled={!formik.isValid}>{formAction}</button>
+                        <button type="submit" className="btn btn-primary text-capitalize" disabled={!formik.isValid}>{formAction}</button>
                     </div>
+                    {children}
                 </form>
             )}
         </Formik>

@@ -9,16 +9,25 @@ const HEADERS = {
 
 export const addLogUser = async (user, path) => {
     try {
-        const response = await axios(`${URL}/auth/${path}`, {
-            method: 'post',
+        const response = await axios.post(`${URL}/auth/${path}`, user, {
             headers: HEADERS,
-            data: user,
             withCredentials: true
         })
         return response
     } catch (error) {
+        console.log(error)
         console.error(error)
         return error.response.data
+    }
+}
+
+export const checkEmailAvailability = async (email) => {
+    try {
+        const response = await axios.post(`${URL}/auth/email`, { email });
+        return true;
+    } catch (error) {
+        console.error(error);
+        return false
     }
 }
 

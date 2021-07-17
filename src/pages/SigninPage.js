@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import SigninForm from '../components/Forms/SigninForm';
 import Cookies from 'js-cookie'
 import AuthApi from '../store/AuthApi';
+import { Link, Redirect } from 'react-router-dom'
 
 
-
-const SigninPage = ({ disconnect: logOut }) => {
+const SigninPage = () => {
     const Auth = useContext(AuthApi);
     const [userDetails, setUserDetails] = useState(() => {
         let splitted = Cookies.get('user')?.split('?');
@@ -32,22 +32,24 @@ const SigninPage = ({ disconnect: logOut }) => {
         Auth.setAuth(false)
     }
 
-    const renderLogOut = () => <div>Hello {userDetails.firstName} you are Logged In.<br /><button type="button" onClick={() => logOut()}>Log Out</button></div>
-
     return (
-        <>
-            <div className="container">
-                <h1>Signin</h1>
-                <hr />
-                {
-                    Auth.auth ? renderLogOut() : <SigninForm formAction='login' authorize={checkAuthorization} />
-                }
-                <hr />
-                {/* {
-                    !Auth.auth && (<SigninForm formAction='register' authorize={checkAuthorization} />)
-                } */}
+        <div className="container">
+            <div className="row h-100">
+                <section className="col-6">
+                    {
+                        !Auth.auth ?
+                            <SigninForm formAction='login' authorize={checkAuthorization}>
+                                <p className="text-center">Don't have an account?<Link className="nav-link d-inline p-2" to="/register">Register Here.</Link></p>
+                            </SigninForm>
+                            :
+                            <Redirect to="/dashboard" />
+                    }
+                </section>
+                <section className="col-6">
+                    <p>Image goes here</p>
+                </section>
             </div>
-        </>
+        </div>
     )
 }
 

@@ -11,6 +11,7 @@ import ExplorePage from './pages/ExplorePage';
 import AuthApi from './store/AuthApi';
 import AddEventPage from './pages/AddEventPage';
 import DashboardPage from './pages/DashboardPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   const [auth, setAuth] = useState(() => {
@@ -43,6 +44,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/signin" component={SigninPage} disconnect={logOut} />
+          <Route path="/register" component={RegisterPage} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/events/:eventId" component={EventPage} />
           <Protected path="/addevent" component={AddEventPage} />

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegUserCircle } from 'react-icons/fa'
 import AuthApi from '../../store/AuthApi';
+import Cookies from 'js-cookie'
 const Navbar = ({ disconnect }) => {
     const Auth = useContext(AuthApi)
     return (
@@ -9,7 +10,6 @@ const Navbar = ({ disconnect }) => {
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                     Eventa
-                    {/* <img src="/FullColor_1280x1024_72dpi.png" alt="eventa logo" width="400" className="d-inline-block align-text-top" /> */}
                 </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -20,6 +20,7 @@ const Navbar = ({ disconnect }) => {
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <FaRegUserCircle /></a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {Auth.auth && (<div className="disabled dropdown-item text-muted">Hello {Cookies.get('user').split('?')[1]}</div>)}
                                 {
                                     Auth.auth ?
                                         <li><a className="dropdown-item" href="/" onClick={() => disconnect()}>Log Out</a></li>
