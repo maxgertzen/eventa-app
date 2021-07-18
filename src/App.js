@@ -38,9 +38,19 @@ function App() {
     setAuth(false)
   }
 
+  const authorizeApp = () => {
+    let user = Cookies.get('user');
+    if (user) {
+      setAuth(true)
+      setUserName(user.split('?')[1])
+    } else {
+      setAuth(false)
+    }
+  }
+
   return (
     <div className="App">
-      <AuthApi.Provider value={{ auth, userName, setAuth }}>
+      <AuthApi.Provider value={{ auth, userName, setAuth, authorizeApp }}>
         <Navbar disconnect={logOut} />
         <Switch>
           <Route exact path="/" component={HomePage} />

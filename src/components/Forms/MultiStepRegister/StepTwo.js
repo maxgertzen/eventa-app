@@ -37,6 +37,12 @@ const StepTwo = ({ data, next, prev }) => {
                             <div className="invalid-feedback">{formik.errors.address}</div>
                         ) : null}
                     </div>
+                    <div className="col-12 mb-2">
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" name="acceptMail" value="1" {...formik.getFieldProps('acceptMail')} />
+                            <label className="form-label" htmlFor="acceptMail">Agree to accept mail from event creators</label>
+                        </div>
+                    </div>
                     <div className="col-12 mb-2 d-grid">
                         <button type="submit" className="btn btn-success text-capitalize mb-2" disabled={!formik.isValid}>Submit</button>
                         <button type="button" className="btn btn-outline-secondary text-capitalize mb-2" onClick={() => prev(formik.values)}>Back</button>

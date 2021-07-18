@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
+import RegisterResponse from './RegisterResponse';
 import { addLogUser } from '../../../api/index';
-import { Redirect } from 'react-router-dom';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import AuthApi from '../../../store/AuthApi';
 
 const MultiStepRegister = ({ children }) => {
     const [data, setData] = useState({
@@ -15,21 +16,25 @@ const MultiStepRegister = ({ children }) => {
         country: 'None',
         city: 'None',
         address: '',
+        acceptMail: false,
         cities: [],
     });
-    const [error, setError] = useState("")
+    const { authorizeApp } = useContext(AuthApi)
+    const [currentResponse, setCurrentResponse] = useState(null)
     const [currentStep, setCurrentStep] = useState(0)
 
     const submitToServer = async (values) => {
         console.log(values)
         try {
             const { passwordConfirmation, cities, ...finalData } = values;
-            console.log(finalData)
             const response = await addLogUser(finalData, "register");
-            if (response.ok) return <Redirect to="/dashboard" />
+            setCurrentResponse(response);
+            authorizeApp()
+            setCurrentStep(prev => prev + 1);
         } catch (error) {
-            setError(error)
             console.error(error)
+            setCurrentResponse(error);
+            setCurrentStep(prev => prev + 1);
         }
     }
 
@@ -50,12 +55,13 @@ const MultiStepRegister = ({ children }) => {
 
     const steps = [
         <StepOne next={handleNextStep} data={data}>{children}</StepOne>,
-        <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />]
+        <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
+        <RegisterResponse response={currentResponse} />
+    ]
 
     return (
         <section>
-            <ProgressBar striped variant="success" now={((currentStep) / (steps.length)) * 100} />
-            {error && <div className="alert alert-danger" role="alert">{error}</div>}
+            <ProgressBar striped variant="success" now={((currentStep) / (steps.length - 1)) * 100} />
             {steps[currentStep]}
         </section>
     )
