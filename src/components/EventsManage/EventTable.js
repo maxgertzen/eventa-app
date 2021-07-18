@@ -32,7 +32,7 @@ const EventTable = ({ userEvents: events, handleDelete }) => {
                                     <td><TimeFormat dateString={userEvent.dateStart} /></td>
                                     <td><TimeFormat dateString={userEvent.dateEnd} /></td>
                                     <td><FaPen style={{ marginRight: '20px', marginLeft: '2px' }} role="button" onClick={() => console.log(`Edit ${userEvent.event_id}`)} />
-                                        <FaTrashAlt role="button" onClick={() => handleDelete(userEvent.event_id)} />
+                                        <FaTrashAlt role="button" onClick={() => handleDelete(userEvent.event_id, userEvent.eventName)} />
                                     </td>
                                 </tr>
                             )
