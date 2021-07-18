@@ -113,6 +113,19 @@ export const deleteEvent = async (eventId) => {
     }
 }
 
+export const editEvent = async (eventId, newData) => {
+    try {
+        const data = await axios.put(`${URL}/events/${eventId}`, newData, {
+            headers: HEADERS,
+            withCredentials: true
+        });
+        console.log(data);
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export const getCountries = async () => {
     try {
         const data = await axios.get(`${URL}/venues/countries`);

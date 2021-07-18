@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
-import { getUserEvents, deleteEvent } from '../api/index';
+import { getUserEvents, deleteEvent, editEvent } from '../api/index';
 import EventTable from '../components/EventsManage/EventTable';
 import NoEventsYet from '../components/EventsManage/NoEventsYet';
-import ModalBox from '../components/ModalBox/ModalBox';
+import ModalBoxDelete from '../components/ModalBox/ModalBoxDelete';
+import ModalBoxEdit from '../components/ModalBox/ModalBoxEdit';
+
 const EventsManagePage = ({ userEvents, setUserEvents }) => {
     const [show, setShow] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
     const [currentEvent, setCurrentEvent] = useState({
-        id: 1,
-        name: 'temp'
+        event_id: 0,
+        eventName: 'temp'
     });
 
-    const handleClose = () => setShow(false)
-    const handleShow = (eventId, name) => {
-        setCurrentEvent({
-            id: eventId,
-            name
-        });
+    const handleClose = () => setShow(false);
+    const closeEdit = () => setShowEdit(false);
+
+    const handleShowEdit = (showCurrentEvent) => {
+        setCurrentEvent(showCurrentEvent);
+        setShowEdit(true)
+    }
+
+    const handleShow = (showCurrentEvent) => {
+        setCurrentEvent(showCurrentEvent);
         setShow(true);
     }
 
@@ -26,14 +33,26 @@ const EventsManagePage = ({ userEvents, setUserEvents }) => {
         setUserEvents(data);
     }
 
+    const handleUpdate = async (eventId, eventUpdatedData) => {
+        try {
+            await editEvent(eventId, eventUpdatedData);
+            closeEdit();
+            const { data } = await getUserEvents()
+            setUserEvents(data);
+        } catch (error) {
+
+        }
+    }
+
 
     return (
         <article className="col-10">
-            <ModalBox show={show} onHide={handleClose} id={currentEvent.id} userEventName={currentEvent.name} actionFunc={handleDelete} />
+            <ModalBoxEdit show={showEdit} onHide={closeEdit} id={currentEvent.event_id} editableEvent={currentEvent} submitToServer={handleUpdate} />
+            <ModalBoxDelete show={show} onHide={handleClose} id={currentEvent.event_id} userEventName={currentEvent.eventName} actionFunc={handleDelete} />
             {
                 userEvents?.length
                     ?
-                    <EventTable userEvents={userEvents} handleDelete={handleShow} />
+                    <EventTable userEvents={userEvents} handleDelete={handleShow} handleEdit={handleShowEdit} />
                     :
                     <NoEventsYet />
 

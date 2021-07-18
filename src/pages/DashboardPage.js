@@ -35,7 +35,7 @@ const DashboardPage = () => {
                     <Route exact path={`${path}`}>
                         <article className="col-10 d-flex flex-column justify-content-center align-items-center">
                             <h4>Hello {userName}</h4>
-                            <h6>You have {eventsData.count} future events</h6>
+                            <h6>You have {eventsData.count || 'no'} future events</h6>
                         </article>
                     </Route>
                     <Route path={`${path}/events`}>
