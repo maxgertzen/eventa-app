@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import { addLogUser } from '../../../api/index';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+
 const MultiStepRegister = ({ children }) => {
     const [data, setData] = useState({
         email: "",
@@ -52,6 +54,7 @@ const MultiStepRegister = ({ children }) => {
 
     return (
         <section>
+            <ProgressBar striped variant="success" now={((currentStep) / (steps.length)) * 100} />
             {error && <div className="alert alert-danger" role="alert">{error}</div>}
             {steps[currentStep]}
         </section>

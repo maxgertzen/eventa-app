@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import CreateEventForm from '../components/Forms/CreateEventForm/CreateEventForm';
+// import CreateEventForm from '../components/Forms/CreateEventForm/CreateEventForm';
+import MultiStepCreateEvent from '../components/Forms/CreateEventForm/MultiStepCreateEvent'
 import { addEvent } from '../api/index';
 import styled from 'styled-components';
 
@@ -25,12 +26,17 @@ const AddEventPage = () => {
         setIsLoading(true);
         try {
             let response = await addEvent(values);
+            console.log(response)
             setServerResponse({
-                status: response.ok,
+                status: response.status,
                 message: response.data.message
             })
             setIsLoading(false)
         } catch (error) {
+            setServerResponse({
+                status: error.status,
+                message: error.data.message
+            })
             console.log(error)
             setIsLoading(false)
         }
@@ -41,11 +47,11 @@ const AddEventPage = () => {
             <h1>Create Event</h1>
             <div className="row">
                 {serverResponse.message &&
-                    (<div className={`alert alert-${serverResponse.status ? 'success' : 'danger'} m-auto w-80`} role="alert">
+                    (<div className={`alert alert-${serverResponse.status === 200 ? 'success' : 'danger'} m-auto w-80`} role="alert">
                         {serverResponse.message}
                     </div>)}
                 {!isLoading
-                    ? <CreateEventForm submitToServer={callApiAndSubmitting} />
+                    ? <MultiStepCreateEvent submitToServer={callApiAndSubmitting} />
                     : (<div className="spinner-border text-success m-auto" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>)}

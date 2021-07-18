@@ -23,7 +23,7 @@ export const addLogUser = async (user, path) => {
 
 export const checkEmailAvailability = async (email) => {
     try {
-        const response = await axios.post(`${URL}/auth/email`, { email });
+        await axios.post(`${URL}/auth/email`, { email });
         return true;
     } catch (error) {
         console.error(error);
@@ -32,6 +32,7 @@ export const checkEmailAvailability = async (email) => {
 }
 
 export const addEvent = async (newEvent) => {
+    console.log(newEvent)
     try {
         const response = await axios.post(`${URL}/events/create`, newEvent, {
             headers: HEADERS,

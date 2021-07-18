@@ -79,7 +79,7 @@ const VenueSelect = ({ formik }) => {
                                     id ?
                                         formik.setFieldValue('venueId', id)
                                         :
-                                        formik.setFieldValue('venueId', e.target.value)
+                                        formik.setFieldValue('venueName', e.target.value)
                                 }} placeholder="Type Venue Place" />
                             <datalist id="venues">
                                 {venueSuggestions?.map((suggestion) => {

@@ -11,5 +11,6 @@ export const initialValues = {
     city: 'None',
     cities: [],
     venueId: '',
+    venueName: '',
     address: ''
 }

@@ -4,7 +4,6 @@ import { eventSchema } from '../../../utils/EventFormValidation';
 import SwitchButton from '../FormSwitchButton/SwitchButton';
 import { initialValues } from './utils';
 import VenueSelect from './VenueSelect';
-import styled from 'styled-components';
 
 
 const CreateEventForm = ({ submitToServer }) => {
@@ -13,10 +12,12 @@ const CreateEventForm = ({ submitToServer }) => {
             initialValues={initialValues}
             validationSchema={eventSchema}
             onSubmit={async (values, { setSubmitting }) => {
+                const { cities, ...rest } = values;
                 let data = new FormData();
-                for (const key in values) {
-                    data.append(key, values[key]);
+                for (const key in rest) {
+                    data.append(key, rest[key]);
                 }
+                console.log(data)
                 await submitToServer(data);
                 setSubmitting(false);
             }}
