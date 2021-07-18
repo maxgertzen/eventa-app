@@ -1,28 +1,25 @@
 import React from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button'
 
-const ModalBox = ({ id, ref, modal, actionFunc, userEventName }) => {
+const ModalBox = ({ id, actionFunc, userEventName, onHide, ...rest }) => {
     return (
         <>
             {id && actionFunc && userEventName ? (
-                <div className="modal fade" ref={ref} tabIndex="-1" aria-labelledby={`${id}Label`} aria-hidden="true">
-                    <div className="modal-dialog modal-sm">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id={`${id}Label`}>
-                                    Attention!
-                                </h5>
-                                <button type="button" className="btn-close" onClick={() => modal.hide()} aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                Are you sure you want to delete {userEventName}?
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={() => modal.hide()}>Close</button>
-                                <button type="button" className="btn btn-danger" onClick={actionFunc}>Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>) : null}
+                <Modal {...rest} onHide={onHide}>
+                    <Modal.Header>
+                        <Modal.Title id={id}>
+                            Attention!
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Are you sure you want to delete {userEventName}?
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={onHide}>Close</Button>
+                        <Button variant="danger" onClick={() => actionFunc(id)}>Delete</Button>
+                    </Modal.Footer>
+                </Modal>) : null}
         </>
     )
 }
