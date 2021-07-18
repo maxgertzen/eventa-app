@@ -27,9 +27,10 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
     useEffect(() => {
         setEventData(prev => ({
             ...prev,
-            editableEvent
+            ...editableEvent
         }))
-    }, [])
+        console.log(eventData)
+    }, [editableEvent])
     return (
         <>
             {id && submitToServer && editableEvent ? (
@@ -40,7 +41,7 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {eventData.name ?
+                        {eventData.eventName ?
                             <Formik
                                 enableReinitialize
                                 initialValues={eventData}
