@@ -5,33 +5,17 @@ import Spinner from 'react-bootstrap/Spinner';
 import { Formik } from 'formik';
 import { eventSchema } from '../../utils/EventFormValidation';
 import EditEventForm from '../Forms/EditEventForm/EditEventForm';
+import { initialValuesBuilder } from '../../utils/functionConstructors';
 
 const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) => {
     // transform data received from server with function constructor to match form initial values
-    const [eventData, setEventData] = useState({
-        name: '',
-        category: '',
-        description: '',
-        price: 0,
-        isPublic: false,
-        dateStart: new Date(),
-        dateEnd: new Date(),
-        imageupload: null,
-        country: 'None',
-        city: 'None',
-        cities: [],
-        venueId: '',
-        venueName: '',
-        address: ''
-    });
+    const [eventData, setEventData] = useState(null);
 
     useEffect(() => {
-        setEventData(prev => ({
-            ...prev,
-            ...editableEvent
-        }))
-    }, [])
-
+        let data = initialValuesBuilder(editableEvent);
+        console.log(data)
+        setEventData(data);
+    }, [editableEvent])
     return (
         <>
             {id && submitToServer && editableEvent ? (
@@ -42,9 +26,9 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {eventData.eventName ?
+                        {eventData ?
                             <Formik
-                                enableReinitialize
+                                enableReinitialize={true}
                                 initialValues={eventData}
                                 validationSchema={eventSchema}
                                 onSubmit={async (values, { setSubmitting }) => {

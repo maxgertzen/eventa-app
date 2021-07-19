@@ -80,7 +80,7 @@ const VenueSelect = ({ formik }) => {
                                         formik.setFieldValue('venueId', id)
                                         :
                                         formik.setFieldValue('venueName', e.target.value)
-                                }} placeholder="Type Venue Place" />
+                                }} placeholder="Type Venue Place" {...formik.getFieldProps('venueName')} />
                             <datalist id="venues">
                                 {venueSuggestions?.map((suggestion) => {
                                     return <option key={suggestion.venue_id} data-value={suggestion.venue_id} value={suggestion.name} />
