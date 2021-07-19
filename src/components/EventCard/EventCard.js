@@ -43,7 +43,7 @@ const TruncateText = styled.div`
     margin: 0 0 1em 0;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: ${props => props.line || 3};
     -webkit-box-orient: vertical;  
 `
 
@@ -53,9 +53,11 @@ const EventCard = ({ event }) => {
             <CardWrapper className="m-3 bg-less-dark text-white shadow" style={{ width: '25rem' }} role="button">
                 <img src={event.image || "/image-placeholder.png"} alt={`${event.name}`} />
                 <div className="card-middle">
-                    <h6 className="card-title text-capitalize" style={{ height: '45px' }}>
-                        {event.eventName}
-                    </h6>
+                    <TruncateText className="card-title text-capitalize" line={3} style={{ maxHeight: '75px' }}>
+                        {event.eventName}<br />
+                        <span className="badge bg-info text-dark">{event.categoryName}</span>
+                    </TruncateText>
+
                     <TruncateText>
                         <p className="text-muted" style={{ fontSize: 'smaller' }}>
                             {event.description}

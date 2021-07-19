@@ -29,7 +29,6 @@ const ExplorePage = () => {
         e.preventDefault();
         let searchTerm = e.target[0].value.toLowerCase();
         const data = events.filter((singleEvent) => singleEvent.eventName.toLowerCase().includes(searchTerm) || singleEvent.description.toLowerCase().includes(searchTerm))
-        // const { data } = await getEvents(e.target[0].value);
         setSearchResults(data);
     }
 

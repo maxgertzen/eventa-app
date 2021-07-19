@@ -37,7 +37,7 @@ const EditEventForm = ({ formik }) => {
             </div>
             <div className="col-md-1 col-2 d-flex flex-column align-items-center justify-items-center mb-2">
                 <label className="form-label" htmlFor="isPublic">Public</label>
-                <SwitchButton id="isPublic" type="checkbox" name="isPublic" checked={formik.values.isPublic ? "1" : false} {...formik.getFieldProps('isPublic')} />
+                <SwitchButton id="isPublic" type="checkbox" name="isPublic" value={formik.values.isPublic} {...formik.getFieldProps('isPublic')} />
             </div>
             <div className="col-md-12 col-12 mb-2">
                 <label className="form-label" htmlFor="description">Description</label>
