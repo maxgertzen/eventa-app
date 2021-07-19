@@ -18,7 +18,22 @@ const VenueFormData = function (venue) {
 }
 
 const initialValuesBuilder = function (bigObject) {
-    if (!bigObject) return {}
+    if (!bigObject) return {
+        name: '',
+        category: '',
+        description: '',
+        price: 0,
+        isPublic: false,
+        dateStart: new Date(),
+        dateEnd: new Date(),
+        imageupload: null,
+        country: 'None',
+        city: 'None',
+        cities: [],
+        venueId: '',
+        venueName: '',
+        address: ''
+    };
     let eventData = new EventFormData(bigObject);
     let venueData = new VenueFormData(bigObject);
     return {

@@ -49,7 +49,7 @@ const EventPage = () => {
                         <section className="event-location text-start my-3">
                             <h6 className="text-muted"><FiDisc /> Location</h6>
                             {eventDetails.venueName ? <em>{eventDetails.venueName}</em> : null}
-                            <p>{`${eventDetails.address}, ${eventDetails.city}`}<br />{`${eventDetails.country}`}</p>
+                            <p>{`${eventDetails.address ? `${eventDetails.address}, ` : ''}${eventDetails.city}`}<br />{`${eventDetails.country}`}</p>
                         </section>
                         <section className="event-price text-start my-3">
                             <h6 className="text-muted"><ImPriceTag /> Price</h6>
@@ -61,7 +61,7 @@ const EventPage = () => {
                         </section>)}
                         <section className="event-actions d-grid">
                             <button className="btn btn-outline-success" type="button">
-                                Join
+                                Save
                             </button>
                         </section>
                     </article>

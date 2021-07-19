@@ -22,7 +22,7 @@ const EditEventForm = ({ formik }) => {
                     <option value="3">Theatre</option>
                     <option value="4">Film</option>
                     <option value="5">Technology</option>
-                    <option value="6">Party or Social Gathering</option>
+                    <option value="6">Parties</option>
                 </select>
                 {formik.touched.category && formik.errors.category ? (
                     <div className="invalid-feedback">{formik.errors.category}</div>
@@ -37,7 +37,7 @@ const EditEventForm = ({ formik }) => {
             </div>
             <div className="col-md-1 col-2 d-flex flex-column align-items-center justify-items-center mb-2">
                 <label className="form-label" htmlFor="isPublic">Public</label>
-                <SwitchButton id="isPublic" type="checkbox" name="isPublic" checked="1" {...formik.getFieldProps('isPublic')} />
+                <SwitchButton id="isPublic" type="checkbox" name="isPublic" checked={formik.values.isPublic ? "1" : false} {...formik.getFieldProps('isPublic')} />
             </div>
             <div className="col-md-12 col-12 mb-2">
                 <label className="form-label" htmlFor="description">Description</label>
@@ -47,14 +47,14 @@ const EditEventForm = ({ formik }) => {
                 ) : null}
             </div>
             <div className="col-md-6 col-12 mb-2">
-                <label className="form-label" htmlFor="datestart">Date Start</label>
+                <label className="form-label" htmlFor="datestart">Start Date</label>
                 <input className="form-control" id="datestart" type="datetime-local" name="dateStart" min="0" {...formik.getFieldProps('dateStart')} />
                 {formik.touched.price && formik.errors.price ? (
                     <div className="invalid-feedback">{formik.errors.dateStart}</div>
                 ) : null}
             </div>
             <div className="col-md-6 col-12 mb-2">
-                <label className="form-label" htmlFor="dateend">Date End</label>
+                <label className="form-label" htmlFor="dateend">End Date</label>
                 <input className="form-control" id="dateend" type="datetime-local" name="dateEnd" min="0" {...formik.getFieldProps('dateEnd')} />
                 {formik.touched.price && formik.errors.price ? (
                     <div className="invalid-feedback">{formik.errors.dateEnd}</div>

@@ -3,7 +3,7 @@ import EventCard from '../EventCard/EventCard';
 
 const SearchResults = ({ results }) => {
     return (
-        <article className="d-flex flex-wrap justify-content-center my-2">
+        <article className="d-flex flex-wrap justify-content-center my-2 text-white">
             {
                 results.length ? results.map(value => {
                     return (

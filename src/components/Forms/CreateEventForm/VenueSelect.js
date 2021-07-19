@@ -9,9 +9,19 @@ const VenueSelect = ({ formik }) => {
         const callApiAndGetCountryList = async () => {
             const { data } = await getCountries();
             setCountries(data);
-        }
+        };
+        const populateCitiesAndVenues = async (country) => {
+            const { data: { cities: _cities, venues } } = await getCities(country);
+            formik.setFieldValue('cities', _cities);
+            if (formik.values.city) formik.setFieldValue('city', formik.values.city)
+            else formik.setFieldValue('city', "");
+            setVenueSuggestions(venues);
+        };
         callApiAndGetCountryList();
-    }, []);
+        if (formik.values.country !== 'None' && formik.values.country) {
+            populateCitiesAndVenues(formik.values.country)
+        }
+    }, [formik]);
 
     return (
         <div className="col-md-12 col-sm-12 mb-2">
@@ -19,7 +29,7 @@ const VenueSelect = ({ formik }) => {
                 <div className="col-md-6">
                     <label htmlFor="countries" className="form-label">Country</label>
                     {
-                        countries.length && (
+                        countries && countries.length ? (
                             <select
                                 id="countries"
                                 name="countries"
@@ -43,7 +53,7 @@ const VenueSelect = ({ formik }) => {
                                     })
                                 }
                             </select>
-                        )
+                        ) : null
                     }
 
                 </div>

@@ -8,14 +8,13 @@ import EditEventForm from '../Forms/EditEventForm/EditEventForm';
 import { initialValuesBuilder } from '../../utils/functionConstructors';
 
 const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) => {
-    // transform data received from server with function constructor to match form initial values
     const [eventData, setEventData] = useState(null);
 
     useEffect(() => {
         let data = initialValuesBuilder(editableEvent);
-        console.log(data)
         setEventData(data);
-    }, [editableEvent])
+    }, [editableEvent]);
+
     return (
         <>
             {id && submitToServer && editableEvent ? (
@@ -52,7 +51,7 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={onHide}>Close</Button>
-                        <Button variant="danger" type="submit" form="edit-event">Confirm</Button>
+                        <Button variant="outline-warning" type="submit" form="edit-event">Confirm</Button>
                     </Modal.Footer>
                 </Modal>) : null}
         </>
