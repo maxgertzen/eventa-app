@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 const Navbar = ({ disconnect }) => {
     const Auth = useContext(AuthApi)
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

@@ -34,6 +34,11 @@ svg {
 	text-decoration: none;
 }
 
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+	background-color: #279b97 !important;
+}
+
 @media (min-width: 720px) {
 	.searchbox-container {
 		width: 60%;

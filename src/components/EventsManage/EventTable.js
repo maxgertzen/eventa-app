@@ -6,8 +6,8 @@ import TimeFormat from '../Date/TimeFormat';
 const EventTable = ({ userEvents: events, handleDelete, handleEdit }) => {
     return (
         events && (
-            <div className="table-responsive">
-                <table className="table table-hover m-auto responsive" style={{ maxWidth: '85vw' }}>
+            <div className="table-responsive mt-5">
+                <table className="table table-dark table-striped table-hover m-auto responsive" style={{ maxWidth: '75vw' }}>
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -25,7 +25,7 @@ const EventTable = ({ userEvents: events, handleDelete, handleEdit }) => {
                             return (
                                 <tr key={userEvent.event_id}>
                                     <th scope="row">{index + 1}</th>
-                                    <td>{userEvent.eventName}</td>
+                                    <td>{userEvent.name}</td>
                                     <td>{userEvent.price || 'Free'}</td>
                                     <td><DateFormat dateString={userEvent.dateStart} /></td>
                                     <td><DateFormat dateString={userEvent.dateEnd} /></td>

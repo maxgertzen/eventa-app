@@ -55,7 +55,7 @@ const ExplorePage = () => {
     }
 
     return (
-        <section className="explore container">
+        <section className="explore container mt-3">
             <SearchBox handleSearch={submitSearch} handleOnChange={handleChange} filter={filterByCategory} />
             <SearchResults results={searchResults} />
         </section>

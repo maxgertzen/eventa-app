@@ -30,7 +30,7 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
             ...prev,
             ...editableEvent
         }))
-    }, [editableEvent])
+    }, [])
 
     return (
         <>

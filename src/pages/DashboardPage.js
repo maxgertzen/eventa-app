@@ -28,7 +28,7 @@ const DashboardPage = () => {
     }, [])
 
     return (
-        <article className="container-fluid h-80">
+        <article className="container-fluid h-80 text-white">
             <div className="row">
                 <SideNav url={url} userName={userName} />
                 <Switch>

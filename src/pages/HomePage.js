@@ -20,7 +20,7 @@ const HomePage = () => {
     }, [])
 
     return (
-        <section className="container-sm">
+        <section className="container-sm mt-3">
             <div className="row g-3 home-categories">
                 {
                     categories?.length ? categories.map(cat => {
