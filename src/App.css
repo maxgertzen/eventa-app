@@ -5,3 +5,10 @@ h1 {
 .App {
 	height: 100%;
 }
+
+@media (min-width: 768px) {
+	.home-categories {
+		max-width: 968px;
+		margin: auto;
+	}
+}

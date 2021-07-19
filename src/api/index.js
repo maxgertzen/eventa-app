@@ -143,3 +143,13 @@ export const getCities = async (countryCode) => {
         console.error(error)
     }
 }
+export const getCategories = async () => {
+    try {
+        const { data } = await axios.get(`${URL}/events/categories`);
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.error(error)
+        return new Error(error.data.message)
+    }
+}

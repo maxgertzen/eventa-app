@@ -7,6 +7,7 @@ import { eventSchema } from '../../utils/EventFormValidation';
 import EditEventForm from '../Forms/EditEventForm/EditEventForm';
 
 const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) => {
+    // transform data received from server with function constructor to match form initial values
     const [eventData, setEventData] = useState({
         name: '',
         category: '',
@@ -29,8 +30,8 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
             ...prev,
             ...editableEvent
         }))
-        console.log(eventData)
     }, [editableEvent])
+
     return (
         <>
             {id && submitToServer && editableEvent ? (
