@@ -28,14 +28,14 @@ const ExplorePage = () => {
     const submitSearch = async (e) => {
         e.preventDefault();
         let searchTerm = e.target[0].value.toLowerCase();
-        const data = events.filter((singleEvent) => singleEvent.name.toLowerCase().includes(searchTerm) || singleEvent.description.toLowerCase().includes(searchTerm))
+        const data = events.filter((singleEvent) => singleEvent.eventName.toLowerCase().includes(searchTerm) || singleEvent.description.toLowerCase().includes(searchTerm))
         // const { data } = await getEvents(e.target[0].value);
         setSearchResults(data);
     }
 
     const handleChange = async (e) => {
         let searchTerm = e.target.value.toLowerCase();
-        let data = events.filter((singleEvent) => singleEvent.name.toLowerCase().includes(searchTerm) || singleEvent.description.toLowerCase().includes(searchTerm))
+        let data = events.filter((singleEvent) => singleEvent.eventName.toLowerCase().includes(searchTerm) || singleEvent.description.toLowerCase().includes(searchTerm))
         if (!searchTerm.length) {
             data = events;
         }

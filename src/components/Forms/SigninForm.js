@@ -14,7 +14,7 @@ const SigninForm = ({ formAction, authorize, children }) => {
             }}
         >
             {formik => (
-                <form className="m-auto row text-left" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
+                <form className="m-auto row text-left text-white" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
                     <div className="col-12 mb-2">
                         <label className="form-label" htmlFor="email">Email Address</label>
                         <input className="form-control" id="email" type="email" {...formik.getFieldProps('email')} />
@@ -30,7 +30,7 @@ const SigninForm = ({ formAction, authorize, children }) => {
                         ) : null}
                     </div>
                     <div className="col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-primary text-capitalize" disabled={!formik.isValid}>{formAction}</button>
+                        <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize" disabled={!formik.isValid}>{formAction}</button>
                     </div>
                     {children}
                 </form>

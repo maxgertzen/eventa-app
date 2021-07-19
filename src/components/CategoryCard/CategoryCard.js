@@ -14,10 +14,10 @@ const images = {
 const CatCard = styled.div`
     width: 300px;
     height: 300px;
-    background: ${props => `linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)),url(${props.img})`};
+    background: ${props => `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)),url(${props.img})`};
     background-size: cover;
     position: relative;
-    opacity: 0.9;
+    opacity: 0.85;
     box-shadow: 0 .5rem .5rem rgba(0,0,0,.3);
     
     :hover {

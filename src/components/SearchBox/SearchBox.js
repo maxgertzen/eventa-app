@@ -5,13 +5,13 @@ import { backupCategory } from '../../utils/data';
 const SearchBox = ({ handleSearch, handleOnChange, filter }) => {
     return (
         <div className="searchbox-container text-center">
-            <form className="d-block m-auto my-3 w-50 clearfix" role="search" onSubmit={handleSearch}>
+            <form className="d-block m-auto my-3 clearfix" role="search" onSubmit={handleSearch}>
                 <div className="input-group">
                     <input type="search" className="form-control" id="main-search" onChange={handleOnChange} name="search" role="searchbox" />
-                    <button className="btn btn-outline-success" type="submit">Search</button>
+                    <button className="btn btn-success bg-gradient" type="submit">Search</button>
                 </div>
             </form>
-            <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <div className="btn-group flex-wrap" style={{ gap: '10px' }} role="group" aria-label="Basic radio toggle button group">
                 <FilterPill name="all" id="all" handleChange={filter} />
                 {
                     backupCategory && backupCategory.map(cat => {

@@ -5,7 +5,14 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	height: 100vh;
+	height: calc(100vh - 57px);
+	background-color: #11202d;
+}
+
+@media (max-width: 320px) {
+	body {
+		height: 100vh;
+	}
 }
 
 #root {
@@ -15,4 +22,8 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
+}
+
+.btn-radius {
+	border-radius: 2rem !important;
 }

@@ -24,7 +24,7 @@ const HomePage = () => {
             <div className="row g-3 home-categories">
                 {
                     categories?.length ? categories.map(cat => {
-                        return <div className="col-md-4 col d-flex justify-content-center align-items-center"><CategoryCard key={cat.category_id} categoryData={cat} /></div>
+                        return <div key={cat.category_id} className="col-md-4 col d-flex justify-content-center align-items-center"><CategoryCard key={cat.category_id} categoryData={cat} /></div>
                     })
                         :
                         null

@@ -6,16 +6,20 @@ import Cookies from 'js-cookie'
 const Navbar = ({ disconnect }) => {
     const Auth = useContext(AuthApi)
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">
-                    Eventa
-                </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul className="navbar-nav ms-auto">
+                <div className="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+                    <ul className="navbar-nav d-none d-md-block">
+                        <li className="nav-item"><Link to='/' className="nav-link">Home</Link></li>
+                    </ul>
+                    <Link className="navbar-brand" to="/" id="eventa-logo">
+                        <img src="/logo_transparent_noText.png" className="d-inline-block" style={{ verticalAlign: '-4.8px' }} alt="eventa logo" width="30" height="24" />
+                        Eventa
+                    </Link>
+                    <ul className="navbar-nav">
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <FaRegUserCircle /></a>
@@ -30,7 +34,6 @@ const Navbar = ({ disconnect }) => {
                                 }
                             </ul>
                         </li>
-                        <li className="nav-item"><Link to='/' className="nav-link">Home</Link></li>
                         {Auth.auth && (<li className="nav-item"><Link to='/addevent' className="nav-link">Create</Link></li>)}
                         <li className="nav-item"><Link to='/explore' className="nav-link">Explore</Link></li>
                     </ul>

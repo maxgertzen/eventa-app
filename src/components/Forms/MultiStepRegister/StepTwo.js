@@ -14,7 +14,7 @@ const StepTwo = ({ data, next, prev }) => {
             onSubmit={handleSubmit}
         >
             {formik => (
-                <form className="m-auto row text-left" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
+                <form className="m-auto row text-left text-white" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
                     <div className="col-12 mb-2">
                         <label className="form-label" htmlFor="firstName">First Name</label>
                         <input className="form-control" id="firstName" type="text" {...formik.getFieldProps('firstName')} placeholder="(Optional) John" />
@@ -44,8 +44,8 @@ const StepTwo = ({ data, next, prev }) => {
                         </div>
                     </div>
                     <div className="col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-success text-capitalize mb-2" disabled={!formik.isValid}>Submit</button>
-                        <button type="button" className="btn btn-outline-secondary text-capitalize mb-2" onClick={() => prev(formik.values)}>Back</button>
+                        <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize mb-2" disabled={!formik.isValid}>Submit</button>
+                        <button type="button" className="btn btn-radius btn-outline-secondary text-capitalize mb-2" onClick={() => prev(formik.values)}>Back</button>
                     </div>
                 </form>
             )}

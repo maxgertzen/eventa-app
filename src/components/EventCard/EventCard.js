@@ -1,32 +1,65 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { formatDate } from '../../utils/helperFunctions';
+// import { formatDate } from '../../utils/helperFunctions';
+import styled from 'styled-components';
+import DateFormat from '../Date/DateFormat';
+import { FiCalendar } from 'react-icons/fi';
+
+const CardWrapper = styled.div`
+    height: 250px;
+    margin: auto;
+    border-radius: 5px;
+    display:flex;
+    padding-right: 15px;
+    transform: scale(1);
+    transition: transform 0.15s linear;
+    
+    :hover {
+        transform: scale(1.02);
+    }
+
+    img {
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+        margin-right: 10px;
+    };
+
+    .card-middle {
+        width: 50%;
+        height: 100%;
+        padding: 10px;
+        position: relative;
+    };
+
+    .card-action {
+        position: absolute;
+        bottom: 10px;
+    };
+`
 
 const EventCard = ({ event }) => {
     return (
-        <div className="card m-3 shadow" style={{ width: '18rem' }}>
-            <img src={event.image || "/image-placeholder.png"} className="card-img-top" alt={`${event.name}`} />
-            <div className="card-body">
-                <h5 className="card-title text-capitalize">
-                    {event.name}
-                </h5>
-                <p className="card-text text-truncate">
-                    {event.description}
-                </p>
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item">
-                        {formatDate(event.dateStart).join(' ')}
-                    </li>
-                    <li className="list-group-item">
-                        {formatDate(event.dateEnd).join(' ')}
-                    </li>
-                </ul>
-            </div>
-            <div className="card-footer d-flex justify-content-between">
-                <Link className="btn btn-primary" to={`events/${event["event_id"]}`}>More Details</Link>
-                <Link className="btn btn-success" to={`events/${event["event_id"]}/reserve`}>Reserve</Link>
-            </div>
-        </div>
+        <Link className="no-decoration" to={`events/${event["event_id"]}`}>
+            <CardWrapper className="m-3 bg-less-dark text-white shadow" style={{ width: '25rem' }} role="button">
+                <img src={event.image || "/image-placeholder.png"} alt={`${event.name}`} />
+                <div className="card-middle">
+                    <h6 className="card-title text-capitalize" style={{ height: '50px' }}>
+                        {event.eventName}
+                    </h6>
+                    <p className="text-muted text-break" style={{ fontSize: 'smaller' }}>
+                        {event.description}
+                    </p>
+                    {event.venueName ? <em>{event.venueName}</em> : null}
+                    {event.city ? <p>{`${event.address}, ${event.city}`}<br />{`${event.country}`}</p> : null}
+                    <div className="card-action d-flex flex-column justify-content-center">
+                        <div className="time-wrapper my-2">
+                            <FiCalendar /><DateFormat dateString={event.dateStart} long={true} className="text-muted fw-bolder m-2" /></div>
+                        <button className="btn btn-radius btn-outline-success">More Details</button>
+                    </div>
+                </div>
+            </CardWrapper>
+        </Link>
     )
 }
 
