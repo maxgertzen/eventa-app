@@ -6,3 +6,12 @@ export const backupCategory = [
     { category_id: 5, name: 'technology' },
     { category_id: 6, name: 'parties' },
 ]
+
+export const images = [
+    '/music.jpeg',
+    'party.jpeg',
+    '/theatre.jpg',
+    '/visualarts.jpeg',
+    'technology.jpeg',
+    'film.jpeg'
+]

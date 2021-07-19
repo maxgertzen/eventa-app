@@ -3,17 +3,11 @@ import React, { useState } from 'react'
 import MultiStepCreateEvent from '../components/Forms/CreateEventForm/MultiStepCreateEvent'
 import { addEvent } from '../api/index';
 import styled from 'styled-components';
+import ImageGalleryDiv from '../components/ImageGalleryDiv/ImageGalleryDiv';
 
 const FormWrapper = styled.section`
     width: 100%;
-    padding-right: var(--bs-gutter-x,.75rem);
-    padding-left: var(--bs-gutter-x,.75rem);
-    margin-right: auto;
-    margin-left: auto; 
-    
-    @media (min-width: 768px){
-        width: 60%;
-    }
+    height: 100%;
 `;
 const AddEventPage = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +20,6 @@ const AddEventPage = () => {
         setIsLoading(true);
         try {
             let response = await addEvent(values);
-            console.log(response)
             setServerResponse({
                 status: response.status,
                 message: response.data.message
@@ -43,18 +36,20 @@ const AddEventPage = () => {
     };
 
     return (
-        <FormWrapper>
-            <h1>Create Event</h1>
-            <div className="row">
-                {serverResponse.message &&
-                    (<div className={`alert alert-${serverResponse.status === 200 ? 'success' : 'danger'} m-auto w-80`} role="alert">
-                        {serverResponse.message}
-                    </div>)}
-                {!isLoading
-                    ? <MultiStepCreateEvent submitToServer={callApiAndSubmitting} />
-                    : (<div className="spinner-border text-success m-auto" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>)}
+        <FormWrapper className="text-white">
+            <div className="row h-100 g-0">
+                <section className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+                    {serverResponse.message &&
+                        (<div className={`alert alert-${serverResponse.status === 200 ? 'success' : 'danger'} my-3`} role="alert">
+                            {serverResponse.message}
+                        </div>)}
+                    {!isLoading
+                        ? <MultiStepCreateEvent submitToServer={callApiAndSubmitting} />
+                        : (<div className="spinner-border text-success m-auto" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>)}
+                </section>
+                <ImageGalleryDiv />
             </div>
         </FormWrapper>
     )

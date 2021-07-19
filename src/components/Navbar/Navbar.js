@@ -20,21 +20,21 @@ const Navbar = ({ disconnect }) => {
                         Eventa
                     </Link>
                     <ul className="navbar-nav">
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <FaRegUserCircle /></a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                {Auth.auth && (<div className="disabled dropdown-item text-muted">Hello {Cookies.get('user').split('?')[1]}</div>)}
-                                {Auth.auth && (<li><Link to='/dashboard' className="dropdown-item">Dashboard</Link></li>)}
-                                {
-                                    Auth.auth ?
-                                        <li><a className="dropdown-item" href="/" onClick={() => disconnect()}>Log Out</a></li>
-                                        :
-                                        <li><Link className="dropdown-item" to="/signin">Signin / Register</Link></li>
-                                }
-                            </ul>
-                        </li>
+                        {
+                            Auth.auth &&
+                            (<li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <FaRegUserCircle /></a>
+                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <div className="disabled dropdown-item text-muted">Hello {Cookies.get('user').split('?')[1]}</div>
+                                    <li><Link to='/dashboard' className="dropdown-item">Dashboard</Link></li>
+
+                                    <li><a className="dropdown-item" href="/" onClick={() => disconnect()}>Log Out</a></li>
+                                </ul>
+                            </li>)
+                        }
                         {Auth.auth && (<li className="nav-item"><Link to='/addevent' className="nav-link">Create</Link></li>)}
+                        <li className="nav-item"><Link className="nav-link" to="/signin">Signin / Register</Link></li>
                         <li className="nav-item"><Link to='/explore' className="nav-link">Explore</Link></li>
                     </ul>
                 </div>

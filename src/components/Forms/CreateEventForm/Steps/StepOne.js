@@ -17,7 +17,7 @@ const StepOne = ({ data, next }) => {
             {formik => (
                 <form className="m-auto row" onSubmit={formik.handleSubmit}>
                     <div className="col-md-12 col-12 mb-2">
-                        <label className="form-label" htmlFor="name">Name</label>
+                        <label className="form-label" htmlFor="name">Name</label><span style={{ float: 'right', fontSize: 'smaller' }}>[{formik.values.name?.length} / 65]</span>
                         <input className={`form-control ${formik.isValid && formik.touched.name ? 'is-valid' : formik.errors.name ? 'is-invalid' : ''}`} id="name" type="text" {...formik.getFieldProps('name')} placeholder="Event Name Here" />
                         {formik.touched.name && formik.errors.name ? (
                             <div className="invalid-feedback">{formik.errors.name}</div>
@@ -38,19 +38,19 @@ const StepOne = ({ data, next }) => {
                             <div className="invalid-feedback">{formik.errors.category}</div>
                         ) : null}
                     </div>
-                    <div className="col-md-5 col-10 mb-2">
+                    <div className="col-md-3 col-10 mb-2">
                         <label className="form-label" htmlFor="price">Price</label>
                         <input className="form-control" id="price" type="number" name="price" min="0" {...formik.getFieldProps('price')} />
                         {formik.touched.price && formik.errors.price ? (
                             <div className="invalid-feedback">{formik.errors.price}</div>
                         ) : null}
                     </div>
-                    <div className="col-md-1 col-2 d-flex flex-column align-items-center justify-items-center mb-2">
+                    <div className="col-md-3 col-2 d-flex flex-column align-items-end justify-items-center mb-2">
                         <label className="form-label" htmlFor="isPublic">Public</label>
                         <SwitchButton id="isPublic" type="checkbox" name="isPublic" {...formik.getFieldProps('isPublic')} />
                     </div>
-                    <div className="col-md-12 col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-primary text-capitalize" disabled={!formik.isValid}>Next Step</button>
+                    <div className="col-md-12 col-12 my-3 d-grid">
+                        <button type="submit" className="btn btn-radius btn-info text-capitalize" disabled={!formik.isValid}>Next Step</button>
                     </div>
                 </form>
             )}
