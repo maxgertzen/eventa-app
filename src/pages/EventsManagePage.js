@@ -47,7 +47,7 @@ const EventsManagePage = ({ userEvents, setUserEvents }) => {
 
 
     return (
-        <article className="col-10">
+        <article className="col-12 col-md-10">
             <ModalBoxEdit show={showEdit} onHide={closeEdit} contentClassName="bg-dark text-white" id={currentEvent.event_id} editableEvent={currentEvent} submitToServer={handleUpdate} />
             <ModalBoxDelete show={showDelete} onHide={closeDelete} contentClassName="bg-dark text-white" id={currentEvent.event_id} currentEvent={currentEvent} actionFunc={handleDelete} />
             {

@@ -38,18 +38,28 @@ const CardWrapper = styled.div`
     };
 `
 
+const TruncateText = styled.div`
+    width: 100%;
+    margin: 0 0 1em 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+`
+
 const EventCard = ({ event }) => {
     return (
         <Link className="no-decoration" to={`events/${event["event_id"]}`}>
             <CardWrapper className="m-3 bg-less-dark text-white shadow" style={{ width: '25rem' }} role="button">
                 <img src={event.image || "/image-placeholder.png"} alt={`${event.name}`} />
                 <div className="card-middle">
-                    <h6 className="card-title text-capitalize" style={{ height: '50px' }}>
+                    <h6 className="card-title text-capitalize" style={{ height: '45px' }}>
                         {event.eventName}
                     </h6>
-                    <p className="text-muted text-break" style={{ fontSize: 'smaller' }}>
-                        {event.description}
-                    </p>
+                    <TruncateText>
+                        <p className="text-muted" style={{ fontSize: 'smaller' }}>
+                            {event.description}
+                        </p></TruncateText>
                     {event.venueName ? <em>{event.venueName}</em> : null}
                     {event.city ? <p>{`${event.address}, ${event.city}`}<br />{`${event.country}`}</p> : null}
                     <div className="card-action d-flex flex-column justify-content-center">

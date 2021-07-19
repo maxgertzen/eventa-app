@@ -21,7 +21,7 @@ const VenueSelect = ({ formik }) => {
         if (formik.values.country !== 'None' && formik.values.country) {
             populateCitiesAndVenues(formik.values.country)
         }
-    }, [formik]);
+    }, []);
 
     return (
         <div className="col-md-12 col-sm-12 mb-2">

@@ -47,7 +47,7 @@ const StepOne = ({ data, next }) => {
                     </div>
                     <div className="col-md-1 col-2 d-flex flex-column align-items-center justify-items-center mb-2">
                         <label className="form-label" htmlFor="isPublic">Public</label>
-                        <SwitchButton id="isPublic" type="checkbox" name="isPublic" checked="1" {...formik.getFieldProps('isPublic')} />
+                        <SwitchButton id="isPublic" type="checkbox" name="isPublic" {...formik.getFieldProps('isPublic')} />
                     </div>
                     <div className="col-md-12 col-12 mb-2 d-grid">
                         <button type="submit" className="btn btn-primary text-capitalize" disabled={!formik.isValid}>Next Step</button>

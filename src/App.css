@@ -11,6 +11,14 @@ h1 {
 		max-width: 968px;
 		margin: auto;
 	}
+	.searchbox-container {
+		width: 60%;
+		margin: auto;
+	}
+
+	#eventa-logo {
+		margin: 0 0 0 65px;
+	}
 }
 
 svg {
@@ -33,19 +41,24 @@ svg {
 .no-decoration {
 	text-decoration: none;
 }
-
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover {
+.nav-pills a {
+	color: white;
+}
+.nav-pills > a.active,
+.nav-pills > a.active:hover {
 	background-color: #279b97 !important;
 }
 
-@media (min-width: 720px) {
-	.searchbox-container {
-		width: 60%;
-		margin: auto;
+.dashboard {
+	height: 100%;
+}
+@media (max-width: 720px) {
+	.dashboard {
+		position: relative;
 	}
-
-	#eventa-logo {
-		margin: 0 0 0 65px;
+	.dashboard .nav-pills {
+		position: absolute;
+		bottom: 0;
+		justify-content: space-around;
 	}
 }
