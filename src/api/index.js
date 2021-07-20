@@ -15,10 +15,8 @@ export const addLogUser = async (user, path) => {
         })
         return response
     } catch (error) {
-        console.log(error)
-        console.error(error)
-        console.log(error.response.data)
-        return error.response.data
+        console.error(error.response)
+        return error.response
     }
 }
 
@@ -29,8 +27,8 @@ export const saveEventToUser = async (id, userId) => {
         })
         return response
     } catch (error) {
-        console.error(error)
-        return error.response.data
+        console.error(error.response)
+        return error.response
     }
 }
 
@@ -89,6 +87,7 @@ export const getUserEvents = async () => {
         return data
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 
@@ -98,10 +97,10 @@ export const getUserDetails = async () => {
             headers: HEADERS,
             withCredentials: true
         })
-        console.log(data)
         return data
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 
@@ -115,6 +114,7 @@ export const updateUserDetails = async (userId, userDetails) => {
         return data
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 
@@ -128,6 +128,7 @@ export const deleteEvent = async (eventId) => {
         return data
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 
@@ -141,6 +142,7 @@ export const editEvent = async (eventId, newData) => {
         return data
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 
@@ -150,6 +152,7 @@ export const getCountries = async () => {
         return data;
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 
@@ -159,6 +162,7 @@ export const getCities = async (countryCode) => {
         return data;
     } catch (error) {
         console.error(error)
+        return error.response.data
     }
 }
 export const getCategories = async () => {
@@ -168,6 +172,6 @@ export const getCategories = async () => {
         return data;
     } catch (error) {
         console.error(error)
-        return new Error(error.data.message)
+        return error.response.data
     }
 }

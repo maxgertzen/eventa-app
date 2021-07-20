@@ -66,16 +66,23 @@ function App() {
     return false
   }
 
+  const getSaved = async () => {
+    let { data } = await getEvents();
+    if (data.saved) setSavedEvents(data.saved)
+  }
+
   const addToSavedEvents = async (id) => {
     if (!auth) {
-      console.log('not auth')
       history.push('/signin')
       return
     } else {
       try {
         if (!isEventInSaved(id)) {
           const { data } = await saveEventToUser(parseInt(id), parseInt(userId));
-          setSavedEvents(data.saved);
+          getSaved();
+          if (data.saved) {
+            setSavedEvents(data.saved);
+          }
         } else {
           return
         }

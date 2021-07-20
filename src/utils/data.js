@@ -9,9 +9,10 @@ export const backupCategory = [
 
 export const images = [
     '/music.jpeg',
-    'party.jpeg',
+    '/party.jpeg',
     '/theatre.jpg',
     '/visualarts.jpeg',
-    'technology.jpeg',
-    'film.jpeg'
+    '/technology.jpeg',
+    '/film.jpeg',
+    '/signin.jpeg'
 ]

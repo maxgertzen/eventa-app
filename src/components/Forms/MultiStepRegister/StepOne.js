@@ -36,7 +36,7 @@ const StepOne = ({ data, next, children }) => {
                             <div className="invalid-feedback">{formik.errors.passwordConfirmation}</div>
                         ) : null}
                     </div>
-                    <div className="col-md-12 col-12 mb-2 d-grid">
+                    <div className="col-md-12 col-12 my-3 d-grid">
                         <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize" disabled={!formik.isValid}>Next Step</button>
                     </div>
                     {children}

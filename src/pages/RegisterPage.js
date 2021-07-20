@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import AuthApi from '../store/AuthApi';
 import { Link, Redirect } from 'react-router-dom'
 import MultiStepRegister from '../components/Forms/MultiStepRegister/MultiStepRegister';
+import ImageGalleryDiv from '../components/ImageGalleryDiv/ImageGalleryDiv';
 
 const RegisterPage = () => {
     const Auth = useContext(AuthApi);
@@ -35,8 +36,8 @@ const RegisterPage = () => {
     }, [Auth])
 
     return (
-        <div className="container">
-            <div className="row h-100">
+        <div className="container-fluid h-100 gx-0 px-0">
+            <div className="row h-100 gx-0">
                 <section className="col-6">
                     {
                         !Auth.auth || !("id" in userDetails) ?
@@ -47,9 +48,7 @@ const RegisterPage = () => {
                             <Redirect to="/explore" />
                     }
                 </section>
-                <section className="col-6">
-                    <p>Image goes here</p>
-                </section>
+                <ImageGalleryDiv />
             </div>
         </div>
     )

@@ -26,13 +26,19 @@ const EventPage = () => {
             }
         }
         const isEventInSaved = (id) => {
-            for (const obj of savedEvents) {
-                if (parseInt(obj.event_id) === parseInt(id)) return setSaved(true)
+            console.log(savedEvents)
+            if (savedEvents) {
+                for (const obj of savedEvents) {
+                    if (parseInt(obj.event_id) === parseInt(id)) {
+                        setSaved(true);
+                        return
+                    }
+                }
             }
             return false
         }
-        isEventInSaved(id)
         getEventData(id)
+        isEventInSaved(id)
     }, [])
 
     const handleClick = () => {
@@ -73,7 +79,7 @@ const EventPage = () => {
                                 (<button className="btn btn-success" type="button" disabled>
                                     Joined
                                 </button>) :
-                                (<button className="btn btn-outline-success" type="button" onClick={() => addToSavedEvents(id)}>
+                                (<button className="btn btn-outline-success" type="button" onClick={() => { setSaved(true); addToSavedEvents(id) }}>
                                     Save
                                 </button>)}
 

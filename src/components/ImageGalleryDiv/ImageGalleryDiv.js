@@ -24,6 +24,7 @@ const ImageGalleryDiv = () => {
         }, 10000);
         return () => clearInterval(bgInterval);
     })
+
     return <BackgroundGallery className="d-none d-md-block col-12 col-md-6" bg={images[currImage]} />
 }
 

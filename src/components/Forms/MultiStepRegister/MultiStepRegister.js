@@ -60,8 +60,9 @@ const MultiStepRegister = ({ children }) => {
     ]
 
     return (
-        <section>
-            <ProgressBar striped variant="success" now={((currentStep) / (steps.length - 1)) * 100} />
+        <section className="d-flex flex-column my-5 w-75 mx-auto">
+            <h3 className="text-white text-center">Register</h3>
+            <ProgressBar striped variant="success" now={((currentStep) / (steps.length - 1)) * 100} className="my-5" />
             {steps[currentStep]}
         </section>
     )
