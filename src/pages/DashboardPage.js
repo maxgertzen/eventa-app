@@ -27,6 +27,14 @@ const DashboardPage = () => {
         callApi()
     }, [])
 
+    const getUpdatedUserData = async () => {
+        try {
+            const response = await getUserDetails();
+            setUserInfo(response.data)
+        } catch (error) {
+            console.error(error)
+        }
+    }
     return (
         <article className="container-fluid text-white dashboard">
             <div className="row">
@@ -41,7 +49,7 @@ const DashboardPage = () => {
                     <Route path={`${path}/events`}>
                         <EventsManagePage userEvents={eventsData.userEvents} setUserEvents={setEventsData} />
                     </Route>
-                    <Route path={`${path}/profile`}><UserProfilePage info={userInfo} /></Route>
+                    <Route path={`${path}/profile`}><UserProfilePage info={userInfo} notifyUserChanges={getUpdatedUserData} /></Route>
                 </Switch>
             </div>
         </article>

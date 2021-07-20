@@ -92,9 +92,14 @@ export const getUserDetails = async () => {
     }
 }
 
-export const updateUserDetails = async (userDetails, path) => {
+export const updateUserDetails = async (userId, userDetails) => {
     try {
-
+        const data = await axios.put(`${URL}/users/dashboard/${userId}`, userDetails, {
+            headers: HEADERS,
+            withCredentials: true
+        })
+        console.log(data)
+        return data
     } catch (error) {
         console.error(error)
     }

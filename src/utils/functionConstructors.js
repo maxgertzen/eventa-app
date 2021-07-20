@@ -1,3 +1,5 @@
+import { dateFormatter } from './dateFormatter';
+
 const EventFormData = function (event) {
     this.name = event.name;
     this.description = event.description;
@@ -15,6 +17,16 @@ const VenueFormData = function (venue) {
     this.address = venue.address;
     this.city = venue.city;
     this.country = venue.country;
+}
+
+const UserFormData = function (user) {
+    this.first_name = user.first_name || '';
+    this.last_name = user.last_name || '';
+    this.bio = user.bio || '';
+    this.birth_date = user.birth_date || dateFormatter(new Date());
+    this.address = user.address || '';
+    this.city = user.City || 'None';
+    this.country = user.Country || 'None';
 }
 
 const initialValuesBuilder = function (bigObject) {
@@ -43,4 +55,21 @@ const initialValuesBuilder = function (bigObject) {
     }
 }
 
-export { initialValuesBuilder };
+const initialValuesUser = function (bigObject) {
+    if (!bigObject) return {
+        first_name: '',
+        last_name: '',
+        bio: '',
+        birth_date: new Date(),
+        address: '',
+        city: 'None',
+        country: 'None'
+    };
+    return {
+        cities: [],
+        ...new UserFormData(bigObject)
+    }
+
+}
+
+export { initialValuesBuilder, initialValuesUser };

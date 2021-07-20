@@ -3,33 +3,33 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { Formik } from 'formik';
-import { eventSchema } from '../../utils/EventFormValidation';
-import EditEventForm from '../Forms/EditEventForm/EditEventForm';
-import { initialValuesBuilder } from '../../utils/functionConstructors';
+import { userSchema } from '../../utils/UserFormValidation';
+import UserEditForm from '../Forms/UserEditForm/UserEditForm';
+import { initialValuesUser } from '../../utils/functionConstructors';
 
-const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) => {
-    const [eventData, setEventData] = useState(null);
+const ModalBoxUserProfile = ({ id, submitToServer, userInfo, onHide, ...rest }) => {
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        let data = initialValuesBuilder(editableEvent);
-        setEventData(data);
-    }, [editableEvent])
+        let data = initialValuesUser(userInfo);
+        setUserData(data);
+    }, [userInfo]);
 
     return (
         <>
-            {id && submitToServer && editableEvent ? (
+            {id && submitToServer && userInfo ? (
                 <Modal {...rest} onHide={onHide}>
                     <Modal.Header>
                         <Modal.Title id={id}>
-                            Edit Event
+                            Edit Your Details
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {eventData ?
+                        {userData ?
                             <Formik
                                 enableReinitialize={true}
-                                initialValues={eventData}
-                                validationSchema={eventSchema}
+                                initialValues={userData}
+                                validationSchema={userSchema}
                                 onSubmit={async (values, { setSubmitting }) => {
                                     const { cities, ...rest } = values;
                                     let data = new FormData();
@@ -41,7 +41,7 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
                                 }}
                             >
                                 {formik => (
-                                    <EditEventForm formik={formik} />)
+                                    <UserEditForm formik={formik} />)
                                 }
                             </Formik>
                             :
@@ -50,11 +50,11 @@ const ModalBoxEdit = ({ id, submitToServer, editableEvent, onHide, ...rest }) =>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={onHide}>Close</Button>
-                        <Button variant="outline-warning" type="submit" form="edit-event">Confirm</Button>
+                        <Button variant="outline-warning" type="submit" form="edit-user">Confirm</Button>
                     </Modal.Footer>
                 </Modal>) : null}
         </>
     )
 }
 
-export default ModalBoxEdit;
+export default ModalBoxUserProfile;
