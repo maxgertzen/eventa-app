@@ -34,7 +34,7 @@ const Navbar = ({ disconnect }) => {
                             </li>)
                         }
                         {Auth.auth && (<li className="nav-item"><Link to='/addevent' className="nav-link">Create</Link></li>)}
-                        <li className="nav-item"><Link className="nav-link" to="/signin">Signin / Register</Link></li>
+                        {!Auth.auth && <li className="nav-item"><Link className="nav-link" to="/signin">Signin / Register</Link></li>}
                         <li className="nav-item"><Link to='/explore' className="nav-link">Explore</Link></li>
                     </ul>
                 </div>

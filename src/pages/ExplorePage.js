@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { getEvents } from '../api';
 import SearchBox from '../components/SearchBox/SearchBox';
 import SearchResults from '../components/SearchResults/SearchResults';
 import { useQuery } from '../hooks/useQuery';
+import AuthApi from '../store/AuthApi';
 
 const ExplorePage = () => {
     const [events, setEvents] = useState([])
@@ -12,13 +13,13 @@ const ExplorePage = () => {
     useEffect(() => {
         const callApi = async () => {
             let { data } = await getEvents();
-            setEvents(data);
+            setEvents(data.events);
             let filtered;
             if (query.get('category')) {
                 let searchTerm = query.get('category')
-                filtered = data.filter((singleEvent) => singleEvent.categoryName.toLowerCase().split(' ').join('').includes(searchTerm))
+                filtered = data.events.filter((singleEvent) => singleEvent.categoryName.toLowerCase().split(' ').join('').includes(searchTerm))
             } else {
-                filtered = data;
+                filtered = data.events;
             }
             setSearchResults(filtered);
         }

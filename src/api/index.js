@@ -17,6 +17,19 @@ export const addLogUser = async (user, path) => {
     } catch (error) {
         console.log(error)
         console.error(error)
+        console.log(error.response.data)
+        return error.response.data
+    }
+}
+
+export const saveEventToUser = async (id, userId) => {
+    try {
+        const response = await axios.post(`${URL}/events/save/${id}`, userId, {
+            withCredentials: true
+        })
+        return response
+    } catch (error) {
+        console.error(error)
         return error.response.data
     }
 }
@@ -32,7 +45,6 @@ export const checkEmailAvailability = async (email) => {
 }
 
 export const addEvent = async (newEvent) => {
-    console.log(newEvent)
     try {
         const response = await axios.post(`${URL}/events/create`, newEvent, {
             headers: HEADERS,
@@ -49,7 +61,8 @@ export const getEvents = async (filter) => {
     try {
         let getURL = filter ? `${URL}/events/s` : `${URL}/events`;
         const data = await axios.get(getURL, {
-            params: { search: filter }
+            params: { search: filter },
+            withCredentials: true
         })
         return data
     } catch (error) {

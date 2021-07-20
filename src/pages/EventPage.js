@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getEventById } from '../api/index';
 import DateFormat from '../components/Date/DateFormat';
@@ -7,27 +7,36 @@ import { FiInfo, FiCalendar, FiLink2, FiDisc } from 'react-icons/fi';
 import { ImPriceTag } from 'react-icons/im';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { useHistory } from "react-router-dom";
+import AuthApi from '../store/AuthApi';
 
 const EventPage = () => {
     const { eventId: id } = useParams();
     const [eventDetails, setEventDetails] = useState({});
+    const [saved, setSaved] = useState(false);
     let history = useHistory();
+    const { savedEvents, addToSavedEvents } = useContext(AuthApi);
 
     useEffect(() => {
         const getEventData = async (eventId) => {
             try {
                 const { data } = await getEventById(eventId);
                 setEventDetails(data);
-                console.log(data)
             } catch (error) {
                 console.error(error.response)
             }
         }
+        const isEventInSaved = (id) => {
+            for (const obj of savedEvents) {
+                if (parseInt(obj.event_id) === parseInt(id)) return setSaved(true)
+            }
+            return false
+        }
+        isEventInSaved(id)
         getEventData(id)
     }, [])
 
     const handleClick = () => {
-        history.goBack()
+        history.push('/explore')
     }
 
     return (
@@ -60,9 +69,14 @@ const EventPage = () => {
                             <p><a href={eventDetails.link}>{eventDetails.link}</a></p>
                         </section>)}
                         <section className="event-actions d-grid">
-                            <button className="btn btn-outline-success" type="button">
-                                Save
-                            </button>
+                            {saved ?
+                                (<button className="btn btn-success" type="button" disabled>
+                                    Joined
+                                </button>) :
+                                (<button className="btn btn-outline-success" type="button" onClick={() => addToSavedEvents(id)}>
+                                    Save
+                                </button>)}
+
                         </section>
                     </article>
                 </section>

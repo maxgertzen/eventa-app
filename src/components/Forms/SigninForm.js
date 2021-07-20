@@ -1,36 +1,34 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { addLogUser } from '../../api';
 import { loginSchema } from '../../utils/LoginFormValidation';
-const SigninForm = ({ formAction, authorize, children }) => {
+const SigninForm = ({ submitToServer, children }) => {
     return (
         <Formik
             initialValues={{ email: '', password: '' }}
             validationSchema={loginSchema}
             onSubmit={async (values, { setSubmitting }) => {
-                await addLogUser(values, formAction);
-                authorize()
+                await submitToServer(values);
                 setSubmitting(false);
             }}
         >
             {formik => (
-                <form className="m-auto row text-left text-white" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
+                <form className="row text-left text-white my-5" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
                     <div className="col-12 mb-2">
                         <label className="form-label" htmlFor="email">Email Address</label>
                         <input className="form-control" id="email" type="email" {...formik.getFieldProps('email')} />
                         {formik.touched.email && formik.errors.email ? (
-                            <div>{formik.errors.email}</div>
+                            <div className="text-danger">{formik.errors.email}</div>
                         ) : null}
                     </div>
                     <div className="col-12 mb-2">
                         <label className="form-label" htmlFor="password">Password</label>
                         <input className="form-control" id="password" type="password" {...formik.getFieldProps('password')} />
                         {formik.touched.password && formik.errors.password ? (
-                            <div>{formik.errors.password}</div>
+                            <div className="text-danger">{formik.errors.password}</div>
                         ) : null}
                     </div>
                     <div className="col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize" disabled={!formik.isValid}>{formAction}</button>
+                        <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize" disabled={!formik.isValid}>Login</button>
                     </div>
                     {children}
                 </form>
