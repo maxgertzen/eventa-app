@@ -38,7 +38,7 @@ const RegisterPage = () => {
     return (
         <div className="container-fluid h-100 gx-0 px-0">
             <div className="row h-100 gx-0">
-                <section className="col-6">
+                <section className="col-12 col-md-6">
                     {
                         !Auth.auth || !("id" in userDetails) ?
                             <MultiStepRegister>

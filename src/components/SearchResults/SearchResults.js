@@ -7,8 +7,7 @@ const SearchResults = ({ results }) => {
             {
                 results.length ? results.map((value, index) => {
                     return (
-                        <div data-aos="fade-right" data-aos-delay={`${(index + 10) * 3}`}>
-                            <EventCard key={value["event_id"]} event={value} /></div>
+                        <EventCard key={value["event_id"]} event={value} />
                     )
                 }) : "No Results were found"
             }

@@ -14,7 +14,7 @@ const StepTwo = ({ data, next, prev }) => {
             onSubmit={handleSubmit}
         >
             {formik => (
-                <form className="m-auto row text-left text-white" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
+                <form className="m-auto row text-left text-white" onSubmit={formik.handleSubmit}>
                     <div className="col-12 mb-2">
                         <label className="form-label" htmlFor="firstName">First Name</label>
                         <input className="form-control" id="firstName" type="text" {...formik.getFieldProps('firstName')} placeholder="(Optional) John" />

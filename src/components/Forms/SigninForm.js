@@ -14,7 +14,7 @@ const SigninForm = ({ submitToServer, children }) => {
             }}
         >
             {formik => (
-                <form className="row m-auto text-left text-white my-5" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
+                <form className="row m-auto text-left text-white my-5" style={{ width: '20vw' }} onSubmit={formik.handleSubmit} data-aos="fade-in">
                     <div className="col-12 mb-3">
                         <label className="form-label" htmlFor="email">Email Address</label>
                         <input className="form-control" id="email" type="email" {...formik.getFieldProps('email')} />

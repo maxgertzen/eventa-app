@@ -16,9 +16,9 @@ h1 {
 		margin: auto;
 	}
 
-	#eventa-logo {
+	/* #eventa-logo {
 		margin: 0 0 0 65px;
-	}
+	} */
 }
 
 svg {
@@ -75,4 +75,23 @@ footer {
 	footer {
 		display: none;
 	}
+}
+
+.fade-appear,
+.fade-enter {
+	z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	transition: opacity 300ms linear 150ms;
+}
+
+.fade-exit {
+	opacity: 1;
+}
+.fade-exit.fade-exit-active {
+	opacity: 0;
+	transition: opacity 150ms linear;
 }

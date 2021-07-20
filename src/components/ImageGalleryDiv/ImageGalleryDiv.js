@@ -3,9 +3,9 @@ import { images } from '../../utils/data';
 import styled from 'styled-components';
 
 const BackgroundGallery = styled.section`
-    background: ${props => `url(${props.bg}) no-repeat center center`};
+    background: ${props => `url(${props.bg}) no-repeat center`};
     background-size: cover;
-    transition: background 0.3s linear;
+    transition: background 0.3s ease;
 `
 
 const ImageGalleryDiv = () => {
@@ -21,7 +21,7 @@ const ImageGalleryDiv = () => {
         }
         const bgInterval = setInterval(() => {
             changeBgImage();
-        }, 10000);
+        }, 5000);
         return () => clearInterval(bgInterval);
     })
 

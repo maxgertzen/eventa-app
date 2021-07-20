@@ -14,7 +14,7 @@ const StepOne = ({ data, next, children }) => {
             onSubmit={handleSubmit}
         >
             {formik => (
-                <form className="m-auto row text-left text-white" style={{ width: '20vw' }} onSubmit={formik.handleSubmit} autoComplete="off">
+                <form className="m-auto row text-left text-white" onSubmit={formik.handleSubmit} autoComplete="off" data-aos="fade-in">
                     <div className="col-md-12 col-12 mb-2">
                         <label className="form-label" htmlFor="email">Email Address</label>
                         <input className={`form-control ${formik.touched.email && !formik.errors.email ? 'is-valid' : formik.errors.email && formik.touched.email ? 'is-invalid' : ''}`} id="email" type="email" {...formik.getFieldProps('email')} placeholder="Email goes here" />

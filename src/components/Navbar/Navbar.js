@@ -12,14 +12,14 @@ const Navbar = ({ disconnect }) => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-                    <ul className="navbar-nav d-none d-md-block">
+                    <ul className="navbar-nav d-none d-md-block" style={{ flex: 1 }}>
                         <li className="nav-item"><Link to='/' className="nav-link">Home</Link></li>
                     </ul>
-                    <Link className="navbar-brand" to="/" id="eventa-logo">
-                        <img src="/logo_transparent_noText.png" className="d-inline-block" style={{ verticalAlign: '-4.8px' }} alt="eventa logo" width="30" height="24" />
+                    <Link className="navbar-brand" to="/" id="eventa-logo" style={{ flex: 1, textAlign: 'center' }}>
+                        <img src="/logo_transparent_noText.png" className="d-inline-block" alt="eventa logo" width="30" height="24" style={{ marginBottom: '3px' }} />
                         Eventa
                     </Link>
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav justify-content-end" style={{ flex: 1 }}>
                         {
                             Auth.auth &&
                             (<li className="nav-item dropdown">

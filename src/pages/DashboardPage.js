@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useRouteMatch, Switch, Route } from 'react-router-dom';
+import { useRouteMatch, Switch, Route, Link } from 'react-router-dom';
 import UserProfilePage from './UserProfilePage';
 import SideNav from '../components/SideNav/SideNav';
 import EventsManagePage from './EventsManagePage';
@@ -44,6 +44,7 @@ const DashboardPage = () => {
                         <article className="col-10 d-flex flex-column justify-content-center align-items-center m-auto my-5">
                             <h4>Hello {userName}</h4>
                             <h6>You have {eventsData.count || 'no'} future events</h6>
+                            <Link to="/dashboard/events" className="btn btn-primary my-2">Start Here</Link>
                         </article>
                     </Route>
                     <Route path={`${path}/events`}>

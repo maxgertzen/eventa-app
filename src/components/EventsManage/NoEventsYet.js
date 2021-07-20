@@ -8,7 +8,7 @@ const NoEventsYet = () => {
             <Alert.Heading>No Events Yet</Alert.Heading>
             <p>
                 Create one <Link to="/addevent">Here</Link>,
-                Or start exploring events <Link to="/explore">Here</Link>.<br />
+                or start exploring events <Link to="/explore">Here</Link>.<br />
             </p>
             <hr />
             <p className="mb-0">

@@ -16,7 +16,6 @@ import { saveEventToUser, getEvents } from './api/index';
 import Footer from './components/Footer/Footer';
 import aos from 'aos';
 
-
 function App() {
   const [auth, setAuth] = useState(() => {
     if (Cookies.get('user')) return true;
@@ -25,7 +24,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState(null);
   const [savedEvents, setSavedEvents] = useState([]);
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     aos.init({ duration: 350 });
