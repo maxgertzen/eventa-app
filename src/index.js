@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route } from 'react-router-dom';
+import 'aos/dist/aos.css';
+
 
 ReactDOM.render(
   <BrowserRouter>
