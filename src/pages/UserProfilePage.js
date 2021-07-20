@@ -24,7 +24,7 @@ const UserProfilePage = ({ info, notifyUserChanges }) => {
     return (
         <article className="col-12 col-md-10">
             <ModalBoxUserProfile show={showUserModal} onHide={closeEdit} contentClassName="bg-dark text-white" id={info.user_id} userInfo={info} submitToServer={handleUpdate} />
-            <section className="user-profile bg-dark w-50 h-100 p-5">
+            <section className="user-profile bg-dark w-50 h-100 p-5 mx-auto">
                 <img src='/avatar_placeholder.png' alt="avatar" style={{ borderRadius: '100%' }} height="150" className="my-3" />
                 {/* <button className="text-start btn btn-primary p-0" type="button" onClick={() => openEdit()}>
                     Edit

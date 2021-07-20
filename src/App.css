@@ -53,12 +53,14 @@ svg {
 	height: 100%;
 }
 @media (max-width: 720px) {
-	.dashboard {
-		position: relative;
+	.dashboard aside {
+		position: sticky;
+		bottom: 0;
+		height: fit-content;
+		margin-top: auto;
 	}
 	.dashboard .nav-pills {
-		position: absolute;
-		bottom: 0;
+		margin-top: auto !important;
 		justify-content: space-around;
 	}
 }

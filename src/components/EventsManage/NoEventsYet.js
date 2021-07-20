@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const NoEventsYet = () => {
     return (
-        <Alert variant="info">
+        <Alert variant="info" className="col-10 m-auto my-5">
             <Alert.Heading>No Events Yet</Alert.Heading>
             <p>
                 Create one <Link to="/addevent">Here</Link>,
@@ -12,7 +12,7 @@ const NoEventsYet = () => {
             </p>
             <hr />
             <p className="mb-0">
-                "Good Luck"
+                Happy Eventing!
             </p>
         </Alert>)
 }

@@ -37,11 +37,11 @@ const DashboardPage = () => {
     }
     return (
         <article className="container-fluid text-white dashboard">
-            <div className="row">
+            <div className="row h-100">
                 <SideNav url={url} userName={userName} />
                 <Switch>
                     <Route exact path={`${path}`}>
-                        <article className="col-10 d-flex flex-column justify-content-center align-items-center">
+                        <article className="col-10 d-flex flex-column justify-content-center align-items-center m-auto my-5">
                             <h4>Hello {userName}</h4>
                             <h6>You have {eventsData.count || 'no'} future events</h6>
                         </article>

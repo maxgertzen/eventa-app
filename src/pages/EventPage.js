@@ -26,7 +26,6 @@ const EventPage = () => {
             }
         }
         const isEventInSaved = (id) => {
-            console.log(savedEvents)
             if (savedEvents) {
                 for (const obj of savedEvents) {
                     if (parseInt(obj.event_id) === parseInt(id)) {

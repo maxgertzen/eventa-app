@@ -110,7 +110,6 @@ export const updateUserDetails = async (userId, userDetails) => {
             headers: HEADERS,
             withCredentials: true
         })
-        console.log(data)
         return data
     } catch (error) {
         console.error(error)
@@ -124,7 +123,6 @@ export const deleteEvent = async (eventId) => {
             headers: HEADERS,
             withCredentials: true
         })
-        console.log(data)
         return data
     } catch (error) {
         console.error(error)
@@ -138,7 +136,6 @@ export const editEvent = async (eventId, newData) => {
             headers: HEADERS,
             withCredentials: true
         });
-        console.log(data);
         return data
     } catch (error) {
         console.error(error)

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const BackgroundGallery = styled.section`
     background: ${props => `url(${props.bg}) no-repeat center center`};
     background-size: cover;
-    transition: background 0.3s ease-out;
+    transition: background 0.3s linear;
 `
 
 const ImageGalleryDiv = () => {
