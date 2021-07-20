@@ -5,7 +5,7 @@ import { backupCategory } from '../utils/data'
 
 
 const HomePage = () => {
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(backupCategory);
 
     useEffect(() => {
         const callApi = async () => {
@@ -20,7 +20,7 @@ const HomePage = () => {
     }, [])
 
     return (
-        <section className="container-sm mt-3 h-100">
+        <section className="home-page container-sm mt-3 h-100">
             <div className="row g-3 home-categories">
                 {
                     categories?.length ? categories.map((cat, index) => {

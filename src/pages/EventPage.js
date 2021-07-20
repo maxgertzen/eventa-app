@@ -58,7 +58,7 @@ const EventPage = () => {
                         </section>
                         <section className="event-time text-start my-3">
                             <h6 className="text-muted"><FiCalendar /> Date & Time </h6>
-                            <DateFormat long={true} dateString={eventDetails.dateStart} /> at <TimeFormat dateString={eventDetails.dateStart} />
+                            <DateFormat long={true} dateString={eventDetails.dateStart} className="fw-bolder" /><br /><TimeFormat dateString={eventDetails.dateStart} />
                         </section>
                         <section className="event-location text-start my-3">
                             <h6 className="text-muted"><FiDisc /> Location</h6>

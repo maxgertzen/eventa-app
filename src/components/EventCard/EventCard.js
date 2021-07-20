@@ -53,7 +53,7 @@ const EventCard = ({ event }) => {
             <CardWrapper className="m-3 bg-less-dark text-white shadow" style={{ width: '25rem' }} role="button">
                 <img src={event.image || "/image-placeholder.png"} alt={`${event.name}`} />
                 <div className="card-middle">
-                    <TruncateText className="card-title text-capitalize" line={3} style={{ maxHeight: '75px' }}>
+                    <TruncateText className="card-title text-capitalize fw-bolder" line={3} style={{ maxHeight: '75px' }}>
                         {event.eventName}<br />
                         <span className="badge bg-info text-dark">{event.categoryName}</span>
                     </TruncateText>

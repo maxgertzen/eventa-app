@@ -112,7 +112,7 @@ function App() {
           <Protected path="/dashboard" component={DashboardPage} />
         </Switch>
       </AuthApi.Provider>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

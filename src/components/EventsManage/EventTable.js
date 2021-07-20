@@ -2,7 +2,7 @@ import React from 'react';
 import { FaPen, FaTrashAlt } from 'react-icons/fa';
 import DateFormat from '../Date/DateFormat';
 import TimeFormat from '../Date/TimeFormat';
-
+import CustomCircleButton from '../CustomCircleButton/CustomCircleButton'
 const EventTable = ({ userEvents: events, handleDelete, handleEdit }) => {
     return (
         events && (
@@ -31,8 +31,8 @@ const EventTable = ({ userEvents: events, handleDelete, handleEdit }) => {
                                     <td><DateFormat dateString={userEvent.dateEnd} /></td>
                                     <td><TimeFormat dateString={userEvent.dateStart} /></td>
                                     <td><TimeFormat dateString={userEvent.dateEnd} /></td>
-                                    <td><FaPen style={{ marginRight: '20px', marginLeft: '2px' }} role="button" onClick={() => handleEdit(userEvent)} />
-                                        <FaTrashAlt role="button" onClick={() => handleDelete(userEvent)} />
+                                    <td><CustomCircleButton title="Edit" size={24} style={{ marginRight: '8px' }} onClick={() => handleEdit(userEvent)}><FaPen /></CustomCircleButton>
+                                        <CustomCircleButton title="Delete" size={24} onClick={() => handleDelete(userEvent)}><FaTrashAlt /></CustomCircleButton>
                                     </td>
                                 </tr>
                             )

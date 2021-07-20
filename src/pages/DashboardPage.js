@@ -5,7 +5,8 @@ import SideNav from '../components/SideNav/SideNav';
 import EventsManagePage from './EventsManagePage';
 import AuthApi from '../store/AuthApi';
 import { getUserEvents, getUserDetails } from '../api/index';
-
+import CustomCircleButton from '../components/CustomCircleButton/CustomCircleButton';
+import { FiPlusSquare, FiClipboard } from 'react-icons/fi';
 const DashboardPage = () => {
     const [eventsData, setEventsData] = useState([])
     const [userInfo, setUserInfo] = useState([])
@@ -44,7 +45,10 @@ const DashboardPage = () => {
                         <article className="col-10 d-flex flex-column justify-content-center align-items-center m-auto my-5">
                             <h4>Hello {userName}</h4>
                             <h6>You have {eventsData.count || 'no'} future events</h6>
-                            <Link to="/dashboard/events" className="btn btn-primary my-2">Start Here</Link>
+                            <div className="d-flex" style={{ gap: '15px' }}>
+                                <Link to="/dashboard/addevent"><CustomCircleButton size={30} title="Create Event"><FiPlusSquare /></CustomCircleButton></Link>
+                                <Link to="/dashboard/events"><CustomCircleButton size={30} title="Dashboard"><FiClipboard /></CustomCircleButton></Link>
+                            </div>
                         </article>
                     </Route>
                     <Route path={`${path}/events`}>
