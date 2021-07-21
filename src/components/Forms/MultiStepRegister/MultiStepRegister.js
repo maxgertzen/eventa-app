@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
+import StepThree from './StepThree';
 import RegisterResponse from './RegisterResponse';
 import { addLogUser } from '../../../api/index';
 import ProgressBar from 'react-bootstrap/ProgressBar';
@@ -16,6 +17,8 @@ const MultiStepRegister = ({ children }) => {
         country: 'None',
         city: 'None',
         address: '',
+        birth_date: new Date(),
+        bio: '',
         acceptMail: false,
         cities: [],
     });
@@ -24,13 +27,13 @@ const MultiStepRegister = ({ children }) => {
     const [currentStep, setCurrentStep] = useState(0)
 
     const submitToServer = async (values) => {
-        console.log(values)
         try {
             const { passwordConfirmation, cities, ...finalData } = values;
             const response = await addLogUser(finalData, "register");
+            console.log(response)
             setCurrentResponse(response);
-            authorizeApp()
             setCurrentStep(prev => prev + 1);
+            authorizeApp()
         } catch (error) {
             console.error(error)
             setCurrentResponse(error);
@@ -56,6 +59,7 @@ const MultiStepRegister = ({ children }) => {
     const steps = [
         <StepOne next={handleNextStep} data={data}>{children}</StepOne>,
         <StepTwo next={handleNextStep} prev={handlePrevStep} data={data} />,
+        <StepThree next={handleNextStep} prev={handlePrevStep} data={data} />,
         <RegisterResponse response={currentResponse} />
     ]
 

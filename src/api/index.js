@@ -13,8 +13,11 @@ export const addLogUser = async (user, path) => {
             headers: HEADERS,
             withCredentials: true
         })
+        console.log('RESPONSE ', response)
         return response
     } catch (error) {
+        console.log('ERROR ', error)
+        console.log(error)
         console.error(error.response)
         return error.response
     }

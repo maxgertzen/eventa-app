@@ -50,7 +50,7 @@ const EventPage = () => {
                 <section className="text-white mt-3 d-flex flex-column">
                     <IoChevronBackOutline className="d-block back-button mx-auto" role="button" onClick={() => handleClick()} style={{ transform: 'scale(2)' }} />
                     <article className="text-center my-3 p-3 shadow bg-less-dark row d-flex mx-auto" style={{ maxWidth: '80%', height: 'fit-content' }}>
-                        <img src={eventDetails.image} alt={`${eventDetails.eventName}`} className="col-12 col-md-6 img-fluid" width="400" />
+                        <img src={eventDetails.image} alt={`${eventDetails.eventName}`} className="col-12 col-md-6 img-fluid" width="400" style={{ objectFit: 'cover' }} />
                         <section className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-start">
                             <h3 className="text-capitalize my-2">{eventDetails.eventName}</h3>
                             <section className="event-info text-start my-3">

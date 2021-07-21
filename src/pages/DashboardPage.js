@@ -38,11 +38,11 @@ const DashboardPage = () => {
     }
     return (
         <article className="container-fluid text-white dashboard">
-            <div className="row h-100">
+            <div className="row h-100 align-items-sm-start align-items-lg-stretch d-flex">
                 <SideNav url={url} userName={userName} />
                 <Switch>
                     <Route exact path={`${path}`}>
-                        <article className="col-10 d-flex flex-column justify-content-center align-items-center m-auto my-5">
+                        <article className="col-10 d-flex flex-column justify-content-start justify-content-lg-center align-items-center m-auto my-5">
                             <h4>Hello {userName}</h4>
                             <h6>You have {eventsData.count || 'no'} future events</h6>
                             <div className="d-flex" style={{ gap: '15px' }}>

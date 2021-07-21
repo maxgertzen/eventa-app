@@ -18,3 +18,8 @@ export const signupSchemaStepTwo = Yup.object({
     address: Yup.string().max(30)
 })
 
+export const signupSchemaStepThree = Yup.object({
+    bio: Yup.string().max(250, "Maximum 250 Characters"),
+    birth_date: Yup.date().max(new Date(), 'You can\'t be born in the future... yet!')
+})
+

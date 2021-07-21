@@ -49,18 +49,13 @@ svg {
 .nav-pills > a.active:hover {
 	background-color: #279b97 !important;
 }
-
-.dashboard {
-	height: 100%;
+@media (min-width: 1140px) {
+	.dashboard {
+		height: 100%;
+	}
 }
 
-@media (max-width: 560px) {
-	.dashboard aside {
-		position: sticky;
-		bottom: 0;
-		height: fit-content;
-		margin-top: auto;
-	}
+@media (max-width: 1140px) {
 	.dashboard .nav-pills {
 		margin-top: auto !important;
 		justify-content: space-around;
