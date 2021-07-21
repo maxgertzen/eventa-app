@@ -26,13 +26,12 @@ const UserProfilePage = ({ info, notifyUserChanges }) => {
             <ModalBoxUserProfile show={showUserModal} onHide={closeEdit} contentClassName="bg-dark text-white" id={info.user_id} userInfo={info} submitToServer={handleUpdate} />
             <section className="h-100 mx-auto d-flex justify-content-center align-items-center" style={{ width: 'fit-content' }}>
                 <div className="row d-flex align-items-center">
-                    <div className="col-12 col-md-8 text-center">
-                        <img src='/avatar_placeholder.png' alt="avatar" style={{ borderRadius: '100%' }} height="150" className="col-6 img-fluid" />
-                        {/* <button className="text-start btn btn-primary p-0" type="button" onClick={() => openEdit()}>
+                    <div className="col-12 col-md-4 text-center">
+                        <img src='/avatar_placeholder.png' alt="avatar" style={{ borderRadius: '50%' }} height="300" width="300" className="my-3 img-fluid" /></div>
+                    {/* <button className="text-start btn btn-primary p-0" type="button" onClick={() => openEdit()}>
                     Edit
                     <FiEdit className="mx-3" /></button> */}
-                    </div>
-                    <div className="col-12 col-md-4">
+                    <div className="col-12 col-md-8">
                         <div className="text-start">
                             <h5>{info.first_name} {info.last_name}</h5>
                             <p>{info.email}</p>
@@ -54,7 +53,7 @@ const UserProfilePage = ({ info, notifyUserChanges }) => {
                     </div>
                 </div>
             </section>
-        </article>
+        </article >
     )
 }
 
