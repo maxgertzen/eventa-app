@@ -38,6 +38,7 @@ body {
 	background: linear-gradient(-45deg, #112b38, #11202d, #165a58, #186132);
 	background-size: 400% 400%;
 	animation: gradientBG 15s ease infinite;
+	scroll-behavior: smooth;
 }
 
 @keyframes gradientBG {
@@ -54,6 +55,7 @@ body {
 
 #root {
 	height: 100%;
+	position: relative;
 }
 
 code {
@@ -67,4 +69,14 @@ code {
 
 a {
 	cursor: pointer;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+.page-container {
+	position: relative;
 }

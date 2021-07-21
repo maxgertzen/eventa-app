@@ -21,15 +21,15 @@ const StepTwo = ({ data, next, prev }) => {
                             <div className="invalid-feedback">{formik.errors.description}</div>
                         ) : null}
                     </div>
-                    <div className="col-md-6 col-12 mb-2">
-                        <label className="form-label" htmlFor="datestart">Date Start</label>
+                    <div className="col-md-12 col-12 mb-2">
+                        <label className="form-label" htmlFor="datestart">Start Date</label>
                         <input className="form-control" id="datestart" type="datetime-local" name="datestart" min="0" {...formik.getFieldProps('dateStart')} />
                         {formik.touched.price && formik.errors.price ? (
                             <div className="invalid-feedback">{formik.errors.dateStart}</div>
                         ) : null}
                     </div>
-                    <div className="col-md-6 col-12 mb-2">
-                        <label className="form-label" htmlFor="dateend">Date End</label>
+                    <div className="col-md-12 col-12 mb-2">
+                        <label className="form-label" htmlFor="dateend">End Date</label>
                         <input className="form-control" id="dateend" type="datetime-local" name="dateend" min="0" {...formik.getFieldProps('dateEnd')} />
                         {formik.touched.price && formik.errors.price ? (
                             <div className="invalid-feedback">{formik.errors.dateEnd}</div>

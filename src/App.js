@@ -13,7 +13,6 @@ import AddEventPage from './pages/AddEventPage';
 import DashboardPage from './pages/DashboardPage';
 import RegisterPage from './pages/RegisterPage';
 import { saveEventToUser, getEvents } from './api/index';
-import Footer from './components/Footer/Footer';
 import aos from 'aos';
 
 function App() {
@@ -112,7 +111,6 @@ function App() {
           <Protected path="/dashboard" component={DashboardPage} />
         </Switch>
       </AuthApi.Provider>
-      {/* <Footer /> */}
     </div>
   );
 }

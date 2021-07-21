@@ -57,7 +57,7 @@ const SigninPage = () => {
             <div className="row h-100 gx-0">
                 <section className="col-12 col-md-6 flex-column">
                     <h3 className="text-center text-white my-5">Login</h3>
-                    {serverResponse && (<Alert variant="danger">
+                    {serverResponse && (<Alert variant="danger" className="w-75 mx-auto">
                         <Alert.Heading></Alert.Heading>
                         {serverResponse}
                         <hr />

@@ -64,7 +64,7 @@ const MultiStepCreateEvent = ({ submitToServer: addEvent }) => {
 
     return (
         <section className="col-10 mx-auto col-md-8 text-white">
-            <ProgressBar striped variant="success" className="mbs-3" now={((currentStep) / (steps.length)) * 100} />
+            <ProgressBar striped variant="success" className="mb-3" now={((currentStep + 0.2) / (steps.length)) * 100} />
             <h1>Create Your Event</h1>
             {error && <div className="alert alert-danger" role="alert">{error}</div>}
             {steps[currentStep]}

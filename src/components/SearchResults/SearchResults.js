@@ -9,7 +9,9 @@ const SearchResults = ({ results }) => {
                     return (
                         <EventCard key={value["event_id"]} event={value} />
                     )
-                }) : "No Results were found"
+                }) : <div className="my-5">
+                    No Results were found
+                </div>
             }
         </article>
     )

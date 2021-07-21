@@ -47,41 +47,43 @@ const EventPage = () => {
     return (
         <>
             {eventDetails && (
-                <section className="text-white mt-3 d-flex flex-column justify-content-center align-items-center">
-                    <IoChevronBackOutline className="d-block back-button" role="button" onClick={() => handleClick()} style={{ transform: 'scale(2)' }} />
-                    <article className="text-center my-3 p-3 shadow bg-less-dark" style={{ maxWidth: '320px', height: 'fit-content' }}>
-                        <img src={eventDetails.image} alt={`${eventDetails.eventName}`} className="w-20 img-fluid" width="400" />
-                        <h3 className="text-capitalize my-2">{eventDetails.eventName}</h3>
-                        <section className="event-info text-start my-3">
-                            <h6 className="text-muted"><FiInfo /> Information</h6>
-                            <p>{eventDetails.description}</p>
-                        </section>
-                        <section className="event-time text-start my-3">
-                            <h6 className="text-muted"><FiCalendar /> Date & Time </h6>
-                            <DateFormat long={true} dateString={eventDetails.dateStart} className="fw-bolder" /><br /><TimeFormat dateString={eventDetails.dateStart} />
-                        </section>
-                        <section className="event-location text-start my-3">
-                            <h6 className="text-muted"><FiDisc /> Location</h6>
-                            {eventDetails.venueName ? <em>{eventDetails.venueName}</em> : null}
-                            <p>{`${eventDetails.address ? `${eventDetails.address}, ` : ''}${eventDetails.city}`}<br />{`${eventDetails.country}`}</p>
-                        </section>
-                        <section className="event-price text-start my-3">
-                            <h6 className="text-muted"><ImPriceTag /> Price</h6>
-                            <p>{eventDetails.price ? `${eventDetails.price} $` : 'Free'}</p>
-                        </section>
-                        {eventDetails.link && (<section className="event-link text-start my-3">
-                            <h6 className="text-muted"><FiLink2 /> Link</h6>
-                            <p><a href={eventDetails.link}>{eventDetails.link}</a></p>
-                        </section>)}
-                        <section className="event-actions d-grid">
-                            {saved ?
-                                (<button className="btn btn-success" type="button" disabled>
-                                    Joined
-                                </button>) :
-                                (<button className="btn btn-outline-success" type="button" onClick={() => { setSaved(true); addToSavedEvents(id) }}>
-                                    Save
-                                </button>)}
+                <section className="text-white mt-3 d-flex flex-column">
+                    <IoChevronBackOutline className="d-block back-button mx-auto" role="button" onClick={() => handleClick()} style={{ transform: 'scale(2)' }} />
+                    <article className="text-center my-3 p-3 shadow bg-less-dark row d-flex mx-auto" style={{ maxWidth: '80%', height: 'fit-content' }}>
+                        <img src={eventDetails.image} alt={`${eventDetails.eventName}`} className="col-12 col-md-6 img-fluid" width="400" />
+                        <section className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-start">
+                            <h3 className="text-capitalize my-2">{eventDetails.eventName}</h3>
+                            <section className="event-info text-start my-3">
+                                <h6 className="text-muted"><FiInfo /> Information</h6>
+                                <p>{eventDetails.description}</p>
+                            </section>
+                            <section className="event-time text-start my-3">
+                                <h6 className="text-muted"><FiCalendar /> Date & Time </h6>
+                                <DateFormat long={true} dateString={eventDetails.dateStart} className="fw-bolder" />{'   |   '}<TimeFormat dateString={eventDetails.dateStart} />
+                            </section>
+                            <section className="event-location text-start my-3">
+                                <h6 className="text-muted"><FiDisc /> Location</h6>
+                                {eventDetails.venueName ? <em>{eventDetails.venueName}</em> : null}
+                                <p>{`${eventDetails.address ? `${eventDetails.address}, ` : ''}${eventDetails.city}`}<br />{`${eventDetails.country}`}</p>
+                            </section>
+                            <section className="event-price text-start my-3">
+                                <h6 className="text-muted"><ImPriceTag /> Price</h6>
+                                <p>{eventDetails.price ? `${eventDetails.price} $` : 'Free'}</p>
+                            </section>
+                            {eventDetails.link && (<section className="event-link text-start my-3">
+                                <h6 className="text-muted"><FiLink2 /> Link</h6>
+                                <p><a href={eventDetails.link}>{eventDetails.link}</a></p>
+                            </section>)}
+                            <section className="event-actions d-grid w-100">
+                                {saved ?
+                                    (<button className="btn btn-success" type="button" disabled>
+                                        Joined
+                                    </button>) :
+                                    (<button className="btn btn-outline-success" type="button" onClick={() => { setSaved(true); addToSavedEvents(id) }}>
+                                        Save
+                                    </button>)}
 
+                            </section>
                         </section>
                     </article>
                 </section>
