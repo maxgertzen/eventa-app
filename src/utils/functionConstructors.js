@@ -3,10 +3,10 @@ import { dateFormatter } from './dateFormatter';
 const EventFormData = function (event) {
     this.name = event.name;
     this.description = event.description;
-    this.dateStart = event.dateStart?.slice(0, -5) || new Date();
-    this.dateEnd = event.dateEnd?.slice(0, -5) || new Date();
+    this.dateStart = event.dateStart?.slice(0, -8) || dateFormatter(new Date());
+    this.dateEnd = event.dateEnd?.slice(0, -8) || dateFormatter(new Date());
     this.imageupload = event.imageupload;
-    this.isPublic = event.isPublic === "1" ? true : false
+    this.isPublic = event.isPublic === 1 ? true : false
     this.price = event.price || 0;
     this.category = event.category;
 }
@@ -46,7 +46,9 @@ const initialValuesBuilder = function (bigObject) {
         venueName: '',
         address: ''
     };
+    console.log(bigObject.dateStart)
     let eventData = new EventFormData(bigObject);
+    console.log(eventData)
     let venueData = new VenueFormData(bigObject);
     return {
         cities: [],

@@ -23,6 +23,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState(null);
   const [savedEvents, setSavedEvents] = useState([]);
+  const [allEvents, setAllEvents] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -42,7 +43,8 @@ function App() {
     }
     const getSaved = async () => {
       let { data } = await getEvents();
-      if (data.saved) setSavedEvents(data.saved)
+      setAllEvents(data.events);
+      if (data.saved) setSavedEvents(data.saved);
     }
     authorizeApp()
     getSaved();
@@ -99,7 +101,7 @@ function App() {
 
   return (
     <div className="App">
-      <AuthApi.Provider value={{ auth, userName, setAuth, authorizeApp, savedEvents, addToSavedEvents }}>
+      <AuthApi.Provider value={{ auth, userName, setAuth, authorizeApp, savedEvents, addToSavedEvents, allEvents }}>
         <Navbar disconnect={logOut} />
         <Switch>
           <Route exact path="/" component={HomePage} />

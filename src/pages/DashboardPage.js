@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useRouteMatch, Switch, Route, Link } from 'react-router-dom';
 import UserProfilePage from './UserProfilePage';
+import SavedEventsPage from './SavedEventsPage';
 import SideNav from '../components/SideNav/SideNav';
 import EventsManagePage from './EventsManagePage';
 import AuthApi from '../store/AuthApi';
@@ -19,7 +20,6 @@ const DashboardPage = () => {
                 const { data } = await getUserEvents()
                 setEventsData(data);
                 const response = await getUserDetails();
-                console.log(response)
                 setUserInfo(response.data)
             } catch (error) {
                 console.error(error)
@@ -55,6 +55,7 @@ const DashboardPage = () => {
                         <EventsManagePage userEvents={eventsData.userEvents} setUserEvents={setEventsData} />
                     </Route>
                     <Route path={`${path}/profile`}><UserProfilePage info={userInfo} notifyUserChanges={getUpdatedUserData} /></Route>
+                    <Route path={`${path}/saved`}><SavedEventsPage /></Route>
                 </Switch>
             </div>
         </article>

@@ -9,6 +9,7 @@ const SideNav = ({ url, userName }) => {
                 <p className="d-none d-lg-block text-center">Hello {userName}</p>
                 <NavLink to={`${url}/profile`} className="flex-md-fill info-pill text-md-center nav-link" activeClassName="active">Profile</NavLink>
                 <NavLink to={`${url}/events`} className="flex-md-fill info-pill text-md-center nav-link" activeClassName="active">Created Events</NavLink>
+                <NavLink to={`${url}/saved`} className="flex-md-fill info-pill text-md-center nav-link" activeClassName="active">Saved Events</NavLink>
             </nav>
         </aside>
     )

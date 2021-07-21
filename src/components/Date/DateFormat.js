@@ -6,7 +6,7 @@ const DateFormat = ({ dateString, long, ...rest }) => {
             {dateString && (
                 <time {...rest}>
                     {
-                        !long ? `${new Date(dateString).getUTCDate()}/${new Date(dateString).getUTCMonth()}` :
+                        !long ? `${new Date(dateString).getUTCDate()}/${new Date(dateString).getUTCMonth() + 1}` :
                             `${new Date(dateString).toDateString()}`
                     }
                 </time>)}
