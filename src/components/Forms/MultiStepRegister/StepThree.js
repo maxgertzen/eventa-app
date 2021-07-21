@@ -29,7 +29,7 @@ const StepThree = ({ data, next, prev }) => {
                             <div className="invalid-feedback">{formik.errors.birth_date}</div>
                         ) : null}
                     </div>
-                    <div className="col-12 mb-2 d-grid">
+                    <div className="col-12 my-2 d-grid">
                         <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize mb-2" disabled={!formik.isValid}>Submit</button>
                         <button type="button" className="btn btn-radius btn-outline-secondary text-capitalize mb-2" onClick={() => prev(formik.values)}>Back</button>
                     </div>

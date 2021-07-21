@@ -51,7 +51,7 @@ const EventCard = ({ event }) => {
     return (
         <Link className="no-decoration" to={`events/${event["event_id"]}`}>
             <CardWrapper className="m-3 bg-less-dark text-white shadow" style={{ width: '25rem' }} role="button">
-                <img src={event.image || "/image-placeholder.png"} alt={`${event.name}`} />
+                <img src={event.image || "/image-placeholder.png"} alt={`${event.name}`} onError={(e) => { e.target.onerror = null; e.target.src = "/image-placeholder.png" }} />
                 <div className="card-middle">
                     <TruncateText className="card-title text-capitalize fw-bolder" line={3} style={{ maxHeight: '75px' }}>
                         {event.eventName}<br />

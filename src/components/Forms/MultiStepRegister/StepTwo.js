@@ -44,7 +44,7 @@ const StepTwo = ({ data, next, prev }) => {
                         </div>
                     </div>
                     <div className="col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize mb-2" disabled={!formik.isValid}>Submit</button>
+                        <button type="submit" className="btn btn-radius btn-success bg-gradient text-capitalize mb-2" disabled={!formik.isValid}>Next</button>
                         <button type="button" className="btn btn-radius btn-outline-secondary text-capitalize mb-2" onClick={() => prev(formik.values)}>Back</button>
                     </div>
                 </form>
