@@ -3,7 +3,7 @@ import { getEvents } from '../api';
 import SearchBox from '../components/SearchBox/SearchBox';
 import SearchResults from '../components/SearchResults/SearchResults';
 import { useQuery } from '../hooks/useQuery';
-import AuthApi from '../store/AuthApi';
+// import AuthApi from '../store/AuthApi';
 
 const ExplorePage = () => {
     const [events, setEvents] = useState([])

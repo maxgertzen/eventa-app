@@ -16,7 +16,7 @@ const SavedEventsPage = () => {
         return () => {
             setFiltered([]);
         }
-    }, [savedEvents])
+    }, [savedEvents, allEvents])
     return (<article className="col-12 col-md-10">
         <h2 className="text-center my-2">Your Saved Events</h2>
         <div className="row d-flex justify-content-center">
