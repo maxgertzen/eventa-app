@@ -4,8 +4,9 @@ import { Formik } from 'formik';
 import LocationSelect from './LocationSelect';
 
 const StepTwo = ({ data, next, prev }) => {
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, { setSubmitting }) => {
         next(values)
+        setSubmitting(false)
     }
     return (
         <Formik
@@ -39,7 +40,7 @@ const StepTwo = ({ data, next, prev }) => {
                     </div>
                     <div className="col-12 mb-2">
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" name="acceptMail" {...formik.getFieldProps('acceptMail')} />
+                            <input className="form-check-input" type="checkbox" name="acceptMail" checked={formik.values.acceptMail} {...formik.getFieldProps('acceptMail')} />
                             <label className="form-label" htmlFor="acceptMail">Agree to accept mail from event creators</label>
                         </div>
                     </div>

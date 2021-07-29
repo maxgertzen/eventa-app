@@ -1,4 +1,5 @@
 import React from 'react';
+import InputCounter from '../InputCounter/InputCounter';
 import { signupSchemaStepThree } from '../../../utils/RegisterFormValidation';
 import { Formik } from 'formik';
 
@@ -16,7 +17,7 @@ const StepThree = ({ data, next, prev }) => {
                 <form className="m-auto row text-left text-white" onSubmit={formik.handleSubmit}>
                     <h6>Couple of optional details ..</h6>
                     <div className="col-md-12 col-12 mb-2">
-                        <label className="form-label" htmlFor="bio">Bio</label>
+                        <label className="form-label" htmlFor="bio">Bio</label><InputCounter count={formik.values.bio} max={250} />
                         <textarea className="form-control" id="bio" name="bio" {...formik.getFieldProps('bio')} placeholder="Tell us about yourself"></textarea>
                         {formik.touched.bio && formik.errors.bio ? (
                             <div className="invalid-feedback">{formik.errors.bio}</div>
