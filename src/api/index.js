@@ -61,8 +61,8 @@ export const addEvent = async (newEvent) => {
 
 export const getEvents = async (filter) => {
     try {
-        let getURL = filter ? `${URL}/events/s` : `${URL}/events`;
-        const data = await axios.get(getURL, {
+        console.log(filter)
+        const data = await axios.get(`${URL}/events/all`, {
             params: { search: filter },
             withCredentials: true
         })
