@@ -1,11 +1,14 @@
 import * as Yup from 'yup';
 import { checkEmailAvailability } from '../api/index';
+import { debounce } from 'lodash'
+
+const debouncedCheck = debounce(checkEmailAvailability, 1000);
 
 export const signupSchemaStepOne = Yup.object({
     email: Yup.string().email('Invalid Email').required('Required').test(
         'is-available',
         'Email is taken',
-        async (value, context) => (await checkEmailAvailability(value)),
+        async (value, context) => (await debouncedCheck(value)),
     ),
     password: Yup.string().min(6, 'Password must be minimum 6 characters').max(14, 'Password must be maximum 14 characters').required('Required'),
     passwordConfirmation: Yup.string().required('Required')

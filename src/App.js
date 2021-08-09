@@ -100,7 +100,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" id="head">
       <AuthApi.Provider value={{ auth, userName, setAuth, authorizeApp, savedEvents, addToSavedEvents, allEvents }}>
         <Navbar disconnect={logOut} />
         <Switch>

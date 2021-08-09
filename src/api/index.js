@@ -1,10 +1,11 @@
 import axios from "axios"
 
 
-const URL = 'http://localhost:3100'
+const URL = process.env.REACT_APP_SERVER_URL
 const HEADERS = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'http://localhost:3100'
+    'Access-Control-Allow-Origin': URL,
+    'Access-Control-Allow-Credentials': 'true'
 };
 
 export const addLogUser = async (user, path) => {
@@ -65,6 +66,7 @@ export const getEvents = async (filter) => {
             params: { search: filter },
             withCredentials: true
         })
+        console.log(data)
         return data
     } catch (error) {
         console.error(error)

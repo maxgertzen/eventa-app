@@ -22,13 +22,17 @@ const HomePage = () => {
             <section className="home-page container-fluid h-100 gx-0 px-0">
                 <HeroHome />
             </section>
-            <section className="row gx-0 text-white my-4">
-                <h3 className="text-uppercase text-center">Next Events</h3>
-                <div className="col-12 mx-auto">
-                    {todayEvents && (<SearchResults results={todayEvents} />)}
-                </div>
-            </section>
-            <div className="row g-3 my-3 text-center text-uppercase text-white home-categories">
+            {
+                todayEvents ? (
+                    <section className="row gx-0 text-white my-4">
+                        <h3 className="text-uppercase text-center">Next Events</h3>
+                        <div className="col-12 mx-auto">
+                            <SearchResults results={todayEvents} />
+                        </div>
+                    </section>
+                ) : <section className="row gx-0 text-white my-4"></section>
+            }
+            <div className="row gx-0 gy-3 my-3 text-center text-uppercase text-white home-categories">
                 <h3 id="categories">Categories</h3>
                 {
                     backupCategory?.length ? backupCategory.map((cat, index) => {
