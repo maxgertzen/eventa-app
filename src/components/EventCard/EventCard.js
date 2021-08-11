@@ -62,8 +62,8 @@ const EventCard = ({ event }) => {
                         <p className="text-muted" style={{ fontSize: 'smaller' }}>
                             {event.description}
                         </p></TruncateText>
-                    {event.venueName ? <em>{event.venueName}</em> : null}
-                    {event.city ? <p>{`${event.address}, ${event.city}`}<br />{`${event.country}`}</p> : null}
+                    {/* {event.venueName ? <em>{event.venueName}</em> : null}
+                    {event.city ? <p>{`${event.address}, ${event.city}`}<br />{`${event.country}`}</p> : null} */}
                     <div className="card-action d-flex flex-column justify-content-center">
                         <div className="time-wrapper my-2">
                             <FiCalendar /><DateFormat dateString={event.dateStart} long={true} className="text-muted fw-bolder m-2" /></div>

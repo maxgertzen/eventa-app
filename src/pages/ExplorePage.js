@@ -13,13 +13,13 @@ const ExplorePage = () => {
     useEffect(() => {
         const callApi = async () => {
             let { data } = await getEvents();
-            setEvents(data.events);
+            setEvents(data);
             let filtered;
             if (query.get('category')) {
                 let searchTerm = query.get('category')
-                filtered = data.events.filter((singleEvent) => singleEvent.categoryName.toLowerCase().split(' ').join('').includes(searchTerm))
+                filtered = data.filter((singleEvent) => singleEvent.categoryName.toLowerCase().split(' ').join('').includes(searchTerm))
             } else {
-                filtered = data.events;
+                filtered = data;
             }
             setSearchResults(filtered);
         }

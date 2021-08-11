@@ -76,6 +76,7 @@ export const getEvents = async (filter) => {
 export const getEventById = async (eventId) => {
     try {
         const data = await axios.get(`${URL}/events/${eventId}`)
+        console.log(data)
         return data
     } catch (error) {
         console.error(error)
