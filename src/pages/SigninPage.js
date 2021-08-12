@@ -38,15 +38,15 @@ const SigninPage = () => {
 
     const callApiAndLog = async (values) => {
         try {
+            console.log(values)
             const data = await addLogUser(values, 'login');
+            console.log(data)
             if (data.status === 200) {
                 checkAuthorization();
                 setServerResponse("")
             } else {
-                setServerResponse(data.data);
+                setServerResponse(data.data.message);
             }
-            if (data.ok)
-                console.log(data)
         } catch (error) {
             console.error(error)
         }

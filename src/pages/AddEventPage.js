@@ -7,7 +7,7 @@ import ImageGalleryDiv from '../components/ImageGalleryDiv/ImageGalleryDiv';
 
 const FormWrapper = styled.section`
     width: 100%;
-    height: 100%;
+    min-height: 627px;
 `;
 const AddEventPage = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +37,7 @@ const AddEventPage = () => {
 
     return (
         <FormWrapper className="text-white">
-            <div className="row h-100 g-0">
+            <div className="row g-0">
                 <section className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
                     {serverResponse.message &&
                         (<div className={`alert alert-${serverResponse.status === 200 ? 'success' : 'danger'} my-3`} role="alert">

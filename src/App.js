@@ -43,6 +43,7 @@ function App() {
     }
     const getSaved = async () => {
       let { data } = await getEvents();
+      console.log(data)
       setAllEvents(data.events);
       if (data.saved) setSavedEvents(data.saved);
     }

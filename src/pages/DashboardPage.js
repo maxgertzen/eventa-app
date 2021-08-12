@@ -44,15 +44,15 @@ const DashboardPage = () => {
                     <Route exact path={`${path}`}>
                         <article className="col-10 d-flex flex-column justify-content-start justify-content-lg-center align-items-center m-auto my-5">
                             <h4>Hello {userName}</h4>
-                            <h6>You have {eventsData.count || 'no'} future events</h6>
+                            <h6>You have {eventsData?.count || 'no'} future events</h6>
                             <div className="d-flex" style={{ gap: '15px' }}>
-                                <Link to="/dashboard/addevent"><CustomCircleButton size={30} title="Create Event"><FiPlusSquare /></CustomCircleButton></Link>
+                                <Link to="/addevent"><CustomCircleButton size={30} title="Create Event"><FiPlusSquare /></CustomCircleButton></Link>
                                 <Link to="/dashboard/events"><CustomCircleButton size={30} title="Dashboard"><FiClipboard /></CustomCircleButton></Link>
                             </div>
                         </article>
                     </Route>
                     <Route path={`${path}/events`}>
-                        <EventsManagePage userEvents={eventsData.userEvents} setUserEvents={setEventsData} />
+                        <EventsManagePage userEvents={eventsData?.userEvents} setUserEvents={setEventsData} />
                     </Route>
                     <Route path={`${path}/profile`}><UserProfilePage info={userInfo} notifyUserChanges={getUpdatedUserData} /></Route>
                     <Route path={`${path}/saved`}><SavedEventsPage /></Route>
