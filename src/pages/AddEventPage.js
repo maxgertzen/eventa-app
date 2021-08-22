@@ -2,13 +2,9 @@ import React, { useState } from 'react'
 // import CreateEventForm from '../components/Forms/CreateEventForm/CreateEventForm';
 import MultiStepCreateEvent from '../components/Forms/CreateEventForm/MultiStepCreateEvent'
 import { addEvent } from '../api/index';
-import styled from 'styled-components';
 import ImageGalleryDiv from '../components/ImageGalleryDiv/ImageGalleryDiv';
 
-const FormWrapper = styled.section`
-    width: 100%;
-    min-height: 627px;
-`;
+
 const AddEventPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [serverResponse, setServerResponse] = useState({
@@ -36,9 +32,9 @@ const AddEventPage = () => {
     };
 
     return (
-        <FormWrapper className="text-white">
-            <div className="row g-0">
-                <section className="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+        <div className="container-fluid h-100 gx-0 text-white">
+            <div className="row h-100 gx-0">
+                <section className="col-12 col-md-6 flex-column">
                     {serverResponse.message &&
                         (<div className={`alert alert-${serverResponse.status === 200 ? 'success' : 'danger'} my-3`} role="alert">
                             {serverResponse.message}
@@ -51,7 +47,7 @@ const AddEventPage = () => {
                 </section>
                 <ImageGalleryDiv />
             </div>
-        </FormWrapper>
+        </div>
     )
 }
 

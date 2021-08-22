@@ -12,7 +12,8 @@ const HomePage = () => {
         const callApi = async () => {
             let { data } = await getEvents('week');
             console.log(data)
-            setTodayEvents(data.events);
+            const nextEvents = data ? data : data.events;
+            setTodayEvents(nextEvents);
         }
         callApi();
     }, [])
