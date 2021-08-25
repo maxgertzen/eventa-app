@@ -34,7 +34,7 @@ const AddEventPage = () => {
     return (
         <div className="container-fluid h-100 gx-0 text-white">
             <div className="row h-100 gx-0">
-                <section className="col-12 col-md-6 flex-column">
+                <section className="col-12 col-md-6 flex-column mh-91">
                     {serverResponse.message &&
                         (<div className={`alert alert-${serverResponse.status === 200 ? 'success' : 'danger'} my-3`} role="alert">
                             {serverResponse.message}
