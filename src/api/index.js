@@ -178,3 +178,17 @@ export const getCategories = async () => {
         return error.response.data
     }
 }
+
+export const checkUserVerification = async (search) => {
+    try {
+        const { data } = await axios.post(`${URL}/auth/verification`, {
+            params: {
+                token: search.get('token'),
+                email: search.get('email')
+            }
+        })
+        return data
+    } catch (error) {
+        return error.response.data
+    }
+}
