@@ -27,9 +27,8 @@ const Hero = styled.section`
         top: 50%;
         left:50%;
         color: white;
-        font-size: 48px;
+        font-size: 40px;
         transform: translate(-50%,-20%);
-        word-spacing: 48px;
         white-space: nowrap;
         animation: fadeIn linear 4.5s;
     }
@@ -49,7 +48,6 @@ const Hero = styled.section`
         }
         h6 {
             font-size: 30px;
-            word-spacing: 20px;
         }
     }
     
@@ -72,7 +70,7 @@ const HeroHome = () => {
             <div className="mx-auto gx-0 px-0">
                 <Hero>
                     <h1>Eventa</h1>
-                    <h6>Discover Create Connect</h6>
+                    <h6>Discover. Create. Connect.</h6>
                     <Link to="/explore" className="btn btn-radius bg-gradient btn-success text-uppercase" id="explore-btn" style={{ width: '180px' }}>Explore</Link>
                     <ArrowAnimatedDown href="#categories" style={{
                         position: 'absolute',
