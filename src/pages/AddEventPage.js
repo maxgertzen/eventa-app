@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-// import CreateEventForm from '../components/Forms/CreateEventForm/CreateEventForm';
+import React, { useState, useCallback } from 'react'
 import MultiStepCreateEvent from '../components/Forms/CreateEventForm/MultiStepCreateEvent'
 import { addEvent } from '../api/index';
-import ImageGalleryDiv from '../components/ImageGalleryDiv/ImageGalleryDiv';
+import { debounce } from 'lodash'
+import { useHistory } from 'react-router-dom';
 
 
 const AddEventPage = () => {
@@ -11,6 +11,15 @@ const AddEventPage = () => {
         status: null,
         message: ''
     });
+
+    const history = useHistory();
+
+    const debouncedRedirect = useCallback(
+        (id) => {
+            debounce(history.push(`/events/${id}`), 3000)
+        },
+        [history],
+    )
 
     const callApiAndSubmitting = async (values) => {
         setIsLoading(true);
@@ -21,6 +30,7 @@ const AddEventPage = () => {
                 message: response.data.message
             })
             setIsLoading(false)
+            debouncedRedirect(response.data.id)
         } catch (error) {
             setServerResponse({
                 status: error.status,
@@ -34,7 +44,7 @@ const AddEventPage = () => {
     return (
         <div className="container-fluid h-100 gx-0 text-white">
             <div className="row h-100 gx-0">
-                <section className="col-12 col-md-6 flex-column mh-91">
+                <section className="col-12 col-md-10 mx-auto mt-5 flex-column">
                     {serverResponse.message &&
                         (<div className={`alert alert-${serverResponse.status === 200 ? 'success' : 'danger'} my-3`} role="alert">
                             {serverResponse.message}
@@ -45,7 +55,6 @@ const AddEventPage = () => {
                             <span className="visually-hidden">Loading...</span>
                         </div>)}
                 </section>
-                <ImageGalleryDiv />
             </div>
         </div>
     )

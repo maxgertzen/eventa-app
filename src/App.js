@@ -14,6 +14,7 @@ import DashboardPage from './pages/DashboardPage';
 import RegisterPage from './pages/RegisterPage';
 import { saveEventToUser, getEvents } from './api/index';
 import aos from 'aos';
+import VerificationPage from './pages/VerificationPage';
 
 function App() {
   const [auth, setAuth] = useState(() => {
@@ -110,6 +111,7 @@ function App() {
           <Route path="/register" component={RegisterPage} />
           <Route path="/explore" component={ExplorePage} />
           <Route path="/events/:eventId" component={EventPage} />
+          <Route path="/verification" component={VerificationPage} />
           <Protected path="/addevent" component={AddEventPage} />
           <Protected path="/dashboard" component={DashboardPage} />
         </Switch>

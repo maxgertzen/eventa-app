@@ -13,7 +13,7 @@ const StepTwo = ({ data, next, prev }) => {
             onSubmit={handleSubmit}
         >
             {formik => (
-                <form className="m-auto row text-left" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
+                <form className="m-auto row text-left" onSubmit={formik.handleSubmit}>
                     <div className="col-md-12 col-12 mb-2">
                         <label className="form-label" htmlFor="description">Description</label>
                         <textarea className="form-control" id="description" name="description" {...formik.getFieldProps('description')}></textarea>
@@ -37,11 +37,11 @@ const StepTwo = ({ data, next, prev }) => {
                     </div>
                     <div className="col-md-12 col-12 mb-2">
                         <label htmlFor="formFile" className="form-label">Upload Image</label>
-                        <input type="file" id="formFile" className="form-control" name="imageupload" onChange={event => formik.setFieldValue('imageupload', event.target.files[0])} />
+                        <input type="file" id="formFile" className="form-control" name="imageupload" onChange={event => formik.setFieldValue('imageupload', event.target.files[0])} placeholder="Choose Image" />
                     </div>
                     <div className="col-12 mb-2 d-grid">
-                        <button type="submit" className="btn btn-success text-capitalize mb-2" disabled={!formik.isValid}>Next</button>
-                        <button type="button" className="btn btn-outline-secondary text-capitalize mb-2" onClick={() => prev(formik.values)}>Back</button>
+                        <button type="submit" className="btn btn-radius btn-info text-capitalize my-2" disabled={!formik.isValid}>Next</button>
+                        <button type="button" className="btn btn-radius btn-outline-secondary text-capitalize mb-2" onClick={() => prev(formik.values)}>Back</button>
                     </div>
                 </form>
             )}

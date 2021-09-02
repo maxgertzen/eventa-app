@@ -14,7 +14,7 @@ const StepThree = ({ data, next, prev }) => {
             onSubmit={handleSubmit}
         >
             {formik => (
-                <form className="m-auto row text-left" style={{ width: '20vw' }} onSubmit={formik.handleSubmit}>
+                <form className="m-auto row text-left" onSubmit={formik.handleSubmit}>
                     <fieldset>
                         <legend>Venue Details</legend>
                         <VenueSelect formik={formik} />
