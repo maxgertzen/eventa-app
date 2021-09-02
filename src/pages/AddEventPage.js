@@ -25,11 +25,11 @@ const AddEventPage = () => {
         setIsLoading(true);
         try {
             let response = await addEvent(values);
+            setIsLoading(false)
             setServerResponse({
                 status: response.status,
                 message: response.data.message
             })
-            setIsLoading(false)
             debouncedRedirect(response.data.id)
         } catch (error) {
             setServerResponse({
